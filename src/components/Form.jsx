@@ -1,0 +1,95 @@
+import React, { useEffect, useState } from 'react';
+import Input from './Input';
+import { useForm } from 'react-hook-form';
+import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import axios from 'axios';
+const Form = ({formId}) => {
+
+    let {register,handleSubmit,watch}= useForm();
+    console.log("FormId:",formId);
+    let [persionCount,setPersionCount]= useState(1);
+
+    var [serviceData,setServiceData]= useState(null);
+    useEffect(()=>{
+        axios.get(`http://localhost:3000/service/getFormData/${formId}`)
+        .then((response)=>{
+            console.log(response.data.serviceData);
+            setServiceData(response.data.serviceData)
+           }).catch((err)=>{
+             console.log(err.response.data);
+             toast.warning(err.response.data.msg);
+           })
+    },[])
+
+    const submitVisitorFormData =async (data)=>{
+        console.log("submitVisitorFormData Called !!! ");
+        await axios.post(`http://localhost:3000/visitor/set-visitor/${formId}`,{
+            visitorData : data 
+        })
+         .then((response)=>{
+            console.log("visitors data : " ,response.data);
+            // setServiceFormData((prev)=>{
+            //   return(prev.map((ele)=> {
+            //     if(ele._id == response.data.serviceData._id){
+            //       ele= response.data.serviceData;
+            //     }
+            //     return ele;
+            //   }))
+            // });
+            toast.success("Visitor Data Succefully Added !!!");
+           }).catch((err)=>{
+             console.log(err);
+             toast.warning(err.response);
+           })
+       }
+    
+    return (
+        <>
+        <form onSubmit={handleSubmit(submitVisitorFormData)} action="" className="flex sm:w-full md:w-[60vw] bg-gray-300 flex-col items-center justify-center border p-3 rounded-md shadow-md">
+            <div className="top text-center w-full bg-blue-700 rounded-md p-3">
+                <h2 className="text-2xl font-bold">{serviceData && serviceData.service_name}</h2>
+                <p>We Provide you best experience in your life</p>
+            </div>
+            <div className="buttom flex flex-col items-start mt-3">
+
+            {serviceData &&
+                serviceData.form_structure.map((ele)=>{
+                    return(
+                        <Input label={ele.fieldName} type={ele.fieldDatatype} placeholder={ele.fieldName}
+                        {...register(ele.fieldName,{required:true})}
+                        ></Input>
+                    )
+                })
+            }
+            {
+                serviceData &&
+                <>
+                <p>1 persion ticket price: {serviceData.ticket_price}</p><br />
+                <input label="Enter number of persions" className='px-3 py-2 rounded-lg text-black outline-none focus:bg-gray-50 duration-200 border border-gray-200 w-full focus:ring-2 ring-blue-400' type="number" value={persionCount} onChange={(e)=> setPersionCount(e.target.value)} min="1"/>
+                <p>Totle Price of {persionCount} persions is: {persionCount*serviceData.ticket_price}</p>
+                </>
+            }
+                <div className="buttons flex items-center justify-between w-full mt-4">
+                <Input
+                type="reset"
+                bgcolor="bg-red-500"
+                className="cursor-pointer"
+                value="Reset"
+                ></Input>
+
+                <Input
+                type="submit"
+                className="cursor-pointer"
+                bgcolor="bg-green-500"
+                value="Submit"
+                ></Input>
+                </div>
+            </div>
+            
+        </form>
+        </>
+    );
+}
+
+export default Form;
