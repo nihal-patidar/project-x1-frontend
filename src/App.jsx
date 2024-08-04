@@ -19,7 +19,8 @@ import ValidatorCard from './components/serviceComp/ValidatorCard';
 import TicketPage from './pages/TicketPage';
 import ValidatorWorkSpace from './components/serviceComp/ValidatorWorkSpace';
 import VisitorStepForTicket from './visitor/VisitorStepForTicket';
-import Scaner from './components/Scaner';
+import Scaner from './ticket-verification/Scaner';
+// import Scaner from './components/Scaner';
 const router= createBrowserRouter([
   {
     path:"/register",
@@ -70,13 +71,13 @@ const router= createBrowserRouter([
   {
     path:"/ticket-generation",
     element: <VisitorStepForTicket/>
-  }
-  // test route
-  ,
+  },
   {
     path:"/scanner",
-    element:<Scaner/>
-  }
+    element:<Scaner></Scaner>
+  },
+  
+  
 
 ])
 function App() {

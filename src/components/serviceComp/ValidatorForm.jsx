@@ -31,7 +31,7 @@ const ValidatorForm = () => {
 
   const [componentDisabled, setComponentDisabled] = useState(false);
   const [validatorData, setValidatorData] = useState({
-    validator_name: "", validator_email: "",
+    validator_name: "", validator_email: "",password : "",
     mobile_number: "", validator_address: "",
     aadhar_number: "", gender: "", position: "", salary: "", time_shift: "",service_id:"", work_time: ""
   })
@@ -109,6 +109,9 @@ return (
       </Form.Item>
       <Form.Item label="Email">
         <Input onChange={(e) => { SubmitData("validator_email", e.target.value) }} />
+      </Form.Item>
+      <Form.Item label="Password">
+        <Input onChange={(e) => { SubmitData("password", e.target.value) }} />
       </Form.Item>
       <Form.Item label="Mobile">
         <Input onChange={(e) => { SubmitData("mobile_number", e.target.value) }} />

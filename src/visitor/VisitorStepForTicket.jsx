@@ -13,7 +13,7 @@ import Form from "./Form";
 import TicketPage from "./TicketPage";
 
 export function VisitorStepForTicket() {
-    const [activeStep, setActiveStep] = React.useState(1);
+    const [activeStep, setActiveStep] = React.useState(0);
     const [isLastStep, setIsLastStep] = React.useState(false);
     const [isFirstStep, setIsFirstStep] = React.useState(false);
 
@@ -83,7 +83,7 @@ export function VisitorStepForTicket() {
                     activeStep == 1 ? <Payment></Payment> : null
                 }
                 {
-                    activeStep == 2 ? <TicketPage visitorData={visitorData} /> : null
+                    activeStep == 2 ? <TicketPage data={{visitorData,formId}} /> : null
                 }
             </div>
             {/* <div className="flex justify-between w-[300px]">

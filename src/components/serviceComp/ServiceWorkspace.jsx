@@ -9,7 +9,7 @@ import ServiceForm from "./ServiceForm";
 import { UserContext } from "../../context/UserContext";
 import { StepperWithContent } from "./AddService";
 const ServiceWorkSpace = () => {
-    const { fields, setFieldsDatatype, isOpen, setIsOpen } = useContext(dataContext);
+    const { fields, setFieldsDatatype, isOpen, setIsOpen , openPopup, closePopup} = useContext(dataContext);
     let { openTab, setOpenTab } = useContext(UserContext);
     const [fieldName, setField] = useState("")
     const [fieldType, setFieldtype] = useState("")
@@ -18,18 +18,18 @@ const ServiceWorkSpace = () => {
         fieldName: "Name", fieldDatatype: "text"
     }, { fieldName: "Email", fieldDatatype: "text" }, { fieldName: "Gender", fieldDatatype: "select" }, { fieldName: "MobileNo.", fieldDatatype: "text" }, { fieldName: "Address", fieldDatatype: "text" },]
 
-    const openPopup = (match) => {
-        console.log(match, "match")
-        setIsOpen((prev) => {
-            return ({ ...prev, [match]: true })
-        })
-    };
+    // const openPopup = (match) => {
+    //     console.log(match, "match")
+    //     setIsOpen((prev) => {
+    //         return ({ ...prev, [match]: true })
+    //     })
+    // };
 
-    const closePopup = (match) => {
-        setIsOpen((prev) => {
-            return ({ ...prev, [match]: false })
-        })
-    };
+    // const closePopup = (match) => {
+    //     setIsOpen((prev) => {
+    //         return ({ ...prev, [match]: false })
+    //     })
+    // };
 
     const addFormField = (obj) => {
         console.log(obj);
@@ -46,7 +46,7 @@ const ServiceWorkSpace = () => {
             <div className="flex flex-col w-full h-full">
                 <div className="h-20 flex items-center workspace-window">
                     <Button
-                        onClick={() => setOpenTab(true)}
+                        onClick={() => openPopup("addServiceForm")}
                         type="primary" icon={<PlusOutlined />} size="large" style={{
                             backgroundColor: "blue"
                             , position: "relative", left: "85%", top: "15px"
@@ -79,11 +79,11 @@ const ServiceWorkSpace = () => {
             )
             }
 
-            {openTab ? (
+            {isOpen.addServiceForm ? (
                 <>
                     <div className={`container absolute top-0 left-0 w-full h-screen px-[10rem] py-[1rem]`}>
                         <div className="popup w-full bg-gray-50 border shadow-md rounded-md max-h-[100vh] relative">
-                            <div onClick={() => setOpenTab(false)} className="icon absolute top-0 right-0 p-3 rounded-full bg-gray-300 cursor-pointer"><BiExit /></div>
+                            <div onClick={() => closePopup("addServiceForm")} className="icon absolute top-0 right-0 p-3 rounded-full bg-gray-300 cursor-pointer"><BiExit /></div>
                             <div className="content">
                                 <StepperWithContent />
                             </div>

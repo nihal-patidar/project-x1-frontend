@@ -12,11 +12,13 @@ import { ServiceContext } from "../../context/ServiceContext";
 import axios from "axios";
 import { UserContext } from "../../context/UserContext";
 import { toast } from "react-toastify";
+import { dataContext } from "../../context/DataState";
  
 export function StepperWithContent() {
   const [activeStep, setActiveStep] = React.useState(0);
   const [isLastStep, setIsLastStep] = React.useState(false);
   const [isFirstStep, setIsFirstStep] = React.useState(false);
+  const {closePopup} = useContext(dataContext)
  
   const handleNext = () => !isLastStep && setActiveStep((cur) => cur + 1);
   const handlePrev = () => !isFirstStep && setActiveStep((cur) => cur - 1);
@@ -85,7 +87,7 @@ export function StepperWithContent() {
         </Button>
         {
         activeStep==1?
-        <Button type="submit">
+        <Button type="submit" onClick={()=>{closePopup("addServiceForm")}}>
           Submit
         </Button>:
         <Button onClick={handleNext} disabled={isLastStep}>
