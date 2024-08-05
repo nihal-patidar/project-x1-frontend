@@ -3,7 +3,7 @@ import {BiIdCard} from "react-icons/bi";
 import { Link } from 'react-router-dom';
 const Sidebar = () => {
     return (
-        <div className='h-screen px-2 py-4 bg-slate-100 w-[10rem]'>
+        <div className='h-screen px-2 py-4 bg-slate-100 w-[200px]'>
             <div className='tabs flex flex-col items-start gap-2'>
                 <h2 className='font-bold text-xl'>Features</h2>
                 <Link to="/home/services">

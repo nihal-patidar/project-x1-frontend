@@ -37,6 +37,7 @@ export function StepperWithContent() {
     console.log(response);
     setServiceFormData((prev)=>[...prev,response.data.service]);
     toast.success("Add service Sunccefully!");
+    closePopup("addServiceForm");
     reset();
    }).catch((err)=>{
      console.log(err.response.data);
@@ -87,7 +88,7 @@ export function StepperWithContent() {
         </Button>
         {
         activeStep==1?
-        <Button type="submit" onClick={()=>{closePopup("addServiceForm")}}>
+        <Button type="submit" >
           Submit
         </Button>:
         <Button onClick={handleNext} disabled={isLastStep}>
@@ -100,3 +101,4 @@ export function StepperWithContent() {
   );
 }
 
+// onClick={()=>{closePopup("addServiceForm")}}

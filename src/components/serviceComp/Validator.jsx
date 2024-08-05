@@ -8,7 +8,7 @@ const Validator = (props) => {
         aadhar_number, gender, position, salary, time_shift,service_id, work_time
       } = props.validator;
   
-    return (<div class=" flex w-[95%] h-56 bg-white shadow-md items-center rounded-lg overflow-hidden justify-around my-2">
+    return (<div class=" flex w-[95%] h-56 bg-white shadow-md items-center border-2 border-orange-200 rounded-lg overflow-hidden justify-around my-2">
         <div className="flex flex-col justify-around center">
             <img class="h-32 w-32 object-cover bg-slate-200" src="profile.jpg" alt="Profile Photo" />
             <h2 class="text-xl font-bold mb-2">{validator_name}</h2>

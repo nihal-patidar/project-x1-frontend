@@ -44,7 +44,7 @@ const router= createBrowserRouter([
       },
       {
         path:"/home/validators",
-        element:<Auth><ValidatorWorkSpace></ValidatorWorkSpace></Auth>
+        element:<Auth><ValidatorWorkSpace/></Auth>
       }
     ]
   },
@@ -65,30 +65,12 @@ const router= createBrowserRouter([
     element:<FormPage/>
   },
   {
-    path:"ticket/:loweruserId",
-    element:<TicketPage/>
-  },
-  {
     path:"/ticket-generation",
     element: <VisitorStepForTicket/>
   },
-  {
-    path:"/scanner",
-    element:<Scaner></Scaner>
-  },
-  
-  
-
 ])
 function App() {
-  // let{setUserData}= useContext(UserContext);
-  // useEffect(async()=>{
-  //   try{
-  //     await axios.post("http://localhost:3000/api/get-user",{})
-  //   }catch(err){
 
-  //   }
-  // },[])
   return (
     <>
     <RouterProvider router={router}></RouterProvider>

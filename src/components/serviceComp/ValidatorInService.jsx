@@ -15,11 +15,12 @@ const ValidatorInService = (props) => {
 
     const getValidator= () => {
         axios.get(`http://localhost:3000/validator/getValidators/${props.service_id}`).then((response)=>{
-            console.log("data from getValidators",response.data.validators);
             let data = response.data.validators ;
             setValidator(data)
-            setAllValidator((prev)=>{
-                return ({...prev , ...data});
+            Object.values(data).forEach((value)=>{
+                setAllValidator((prev)=>{
+                    return ([...prev , value]);
+                })
             })
         }).catch((err)=>{
             console.log("error",err);
@@ -32,6 +33,7 @@ const ValidatorInService = (props) => {
     const validatorList = ()=>{
         Object.keys(validators).forEach((key,indx)=>{
             let validator = validators[key];
+            // console.log("validator and its key :-",validator , " -> " , key)
             Element.push(
                 <Validator_Strip key={indx} validator={{...validator}}/>
             )

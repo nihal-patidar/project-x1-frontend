@@ -3,13 +3,13 @@ import { Button, Input, Radio, Select } from "antd";
 import { PlusOutlined } from '@ant-design/icons';
 import { dataContext } from "../../context/DataState";
 
-import Service from "./ServiceCard";
+import Services from "./ServiceCard";
 import { BiExit } from 'react-icons/bi';
 import ServiceForm from "./ServiceForm";
 import { UserContext } from "../../context/UserContext";
 import { StepperWithContent } from "./AddService";
 const ServiceWorkSpace = () => {
-    const { fields, setFieldsDatatype, isOpen, setIsOpen , openPopup, closePopup} = useContext(dataContext);
+    const { fields, setFieldsDatatype, isOpen, setIsOpen , openPopup,setAllValidator, closePopup} = useContext(dataContext);
     let { openTab, setOpenTab } = useContext(UserContext);
     const [fieldName, setField] = useState("")
     const [fieldType, setFieldtype] = useState("")
@@ -40,9 +40,10 @@ const ServiceWorkSpace = () => {
     
     useEffect(() => {
         console.log("fields");
+        setAllValidator([]);
     }, [])
     return (
-        <div className="flex flex-col w-full h-[85vh] shadow-lg workspace">
+        <div className="flex flex-col w-[90%] h-[85vh] shadow-lg workspace">
             <div className="flex flex-col w-full h-full">
                 <div className="h-20 flex items-center workspace-window">
                     <Button
@@ -52,8 +53,8 @@ const ServiceWorkSpace = () => {
                             , position: "relative", left: "85%", top: "15px"
                         }}>Add Services</Button>
                 </div>
-                <div className="center w-full h-full m-3 overflow-y-auto workspace-contents scroll-m-0">
-                    <Service></Service>
+                <div className="center w-full h-[90%] m-3 workspace-contents scroll-m-0">
+                    <Services></Services>
                 </div>
             </div>
             {isOpen.formPreView ? (
@@ -94,6 +95,7 @@ const ServiceWorkSpace = () => {
                 <></>
             )
             }
+            
 
 
         </div>
