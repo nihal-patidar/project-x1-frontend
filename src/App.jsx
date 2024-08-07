@@ -20,6 +20,7 @@ import TicketPage from './pages/TicketPage';
 import ValidatorWorkSpace from './components/serviceComp/ValidatorWorkSpace';
 import VisitorStepForTicket from './visitor/VisitorStepForTicket';
 import Scaner from './components/Scaner';
+import Dashboard from './components/Dashboard';
 const router= createBrowserRouter([
   {
     path:"/register",
@@ -44,6 +45,10 @@ const router= createBrowserRouter([
       {
         path:"/home/validators",
         element:<Auth><ValidatorWorkSpace></ValidatorWorkSpace></Auth>
+      },
+      {
+        path:"/home",
+        element:<Dashboard/>
       }
     ]
   },

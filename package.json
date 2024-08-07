@@ -21,7 +21,8 @@
     "react-qr-scanner": "^1.0.0-alpha.11",
     "react-razorpay": "^2.0.1",
     "react-router-dom": "^6.23.1",
-    "react-toastify": "^10.0.5"
+    "react-toastify": "^10.0.5",
+    "recharts": "^2.12.7"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",
