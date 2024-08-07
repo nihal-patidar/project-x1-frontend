@@ -3,7 +3,7 @@ import QrReader from 'react-qr-scanner';
 
 const Scaner = () => {
   const [delay, setDelay] = useState(100);
-  const [result, setResult] = useState('No result');
+  const [result, setResult] = useState();
 
   const handleScan = useCallback((data) => {
     if (data) {
@@ -11,6 +11,10 @@ const Scaner = () => {
         setResult(data.text || JSON.stringify(data));
     }
   }, []);
+
+  if(result){
+    
+  }
 
   const handleError = useCallback((err) => {
     console.error(err);

@@ -6,8 +6,8 @@ export const dataContext = createContext('default');
 export const DataState = (props) => {
     const [fields , setFieldsDatatype] = useState([]);
     const [isOpen , setIsOpen] = useState({formPreView : false ,serviceForm : false,
-    qrPreView: false , addValidatorForm : false , registerCompany : false , form1 : true , form2 : false , login : false})
-    const [allValidators, setAllValidator] = useState({})
+    qrPreView: false , addValidatorForm : false , registerCompany : false , form1 : true , form2 : false , login : false , addServiceForm : false})
+    const [allValidators, setAllValidator] = useState([])
     const [users , setUsers] = useState([])
 
     const Heloo = ()=>{

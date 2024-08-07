@@ -4,20 +4,21 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import { useParams } from 'react-router-dom';
 
-const TicketPage = ({visitorData}) => {
+const TicketPage = ({data}) => {
     // const [data, setData] = useState(null);
     // const loweruserId= useParams().loweruserId;
-    // useEffect(async()=>{
-    //     let lowerdata= await axios.get("http://localhost:3000/user/get-user/"+loweruserId);
-    //     if(!lowerdata){
-    //         toast.warning("ticket is not generated refresh");
-    //     }
+    useEffect(async()=>{
+        // let lowerdata= await axios.get(`http://localhost:3000/service/getThisService/${data.formId}`);
+        // console.log("validator_list of this service",lowerdata.data.validater_list);
+        // if(!lowerdata){
+        //     toast.warning("ticket is not generated refresh");
+        // }
 
-    //     setData(lowerdata.lowerdata);
-    // },[])
+        // setData(lowerdata.lowerdata);
+    },[])
     return (
         <div>
-            <Ticket data={visitorData}/>
+            <Ticket data={data}/>
         </div>
     );
 }

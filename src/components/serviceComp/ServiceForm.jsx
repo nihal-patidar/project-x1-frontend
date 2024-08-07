@@ -17,7 +17,7 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import { ServiceContext } from '../../context/ServiceContext';
 const ServiceForm = ({formId}) => {
-  const { fields, setFieldsDatatype, Heloo,isOpen } = useContext(dataContext);
+  const { fields, setFieldsDatatype, Heloo,isOpen , closePopup } = useContext(dataContext);
   let {serviceFormData,setServiceFormData}= useContext(ServiceContext);
 
   const [componentSize, setComponentSize] = useState('default');
@@ -51,6 +51,8 @@ const ServiceForm = ({formId}) => {
           }))
         });
         toast.success("Form Succefully Created!");
+        closePopup("serviceForm");
+
        }).catch((err)=>{
          console.log(err);
          toast.warning(err.response);

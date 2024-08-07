@@ -59,68 +59,71 @@ const ServiceCard = () => {
 
 
     return (
-        <div className="flex flex-col gap-2 w-[95%] h-64 bg-white shadow-inner rounded-lg overflow-hidden justify-around my-2 border">
+        <div className="flex flex-col gap-2 w-full h-full bg-white shadow-inner rounded-lg overflow-y-auto justify-start items-center my-2 border list-box">
 
             {serviceFormData &&
                 serviceFormData.map((ele, index) => {
-                        console.log("elements services",ele);
+                    console.log("elements services", ele);
                     return (
-                        <div key={index} className='flex'>
-                            <div className={`popup-window absolute top-5 left-5 w-[50%] bg-blue-gray-500 rounded-md ${isOpen["serviceForm"] ? "flex" : "hidden"}`}>
-                                <div className='service-form-builder py-4 flex flex-col items-center w-full mt-6   ' >
+                        <div key={index} className='flex w-[95%] h-64 bg-white shadow-lg border-2 border-orange-200 rounded-lg my-2'>
+                            {isOpen.serviceForm ?
+                                <div className={`popup-window bg-white h-[80%] w-[1200px] overflow-y-auto border-2 border-gray-500 absolute top-20 left-44 box-border px-7 list-box`}>
+                                    <div className='service-form-builder py-4 flex flex-col items-center w-full mt-6   ' >
 
-                                    <div className="flex relative">
-                                        <h2 className="text-[#872323] 
-                        text-xl font-extrabold mb-6 text-center min-w-80">
-                                            Build Your Form here
-                                        </h2>
-                                        <button className="absolute top-0 right-0" style={{ color: "black", fontWeight: "bolder", border: "none" }} onClick={() => closePopup("serviceForm")}>Close</button>
-                                    </div>
 
-                                    <div className="w-[80%] bg-[#3a433d] rounded-2xl mb-8 px-5 py-8">
-                                        <div className="flex justify-start flex-wrap">
-                                            {keywords.map(((val, indx) => {
-                                                return (
-                                                    <Button key={indx} onClick={(e) => {
-                                                        addFormField(val);
-                                                    }}
-                                                        type="primary" className="btn-5">{val.fieldName}</Button>
-                                                )
-                                            }))
-
-                                            }
+                                        <div className="flex justify-between w-full">
+                                            <h2 className="text-[#872323] 
+                                text-xl font-extrabold shadow-lg mb-6 text-center w-[400px]">
+                                                Creating Visitors Form
+                                            </h2>
+                                            <button className="relative -top-10 font-bold" style={{ color: "black", fontWeight: "bolder", border: "none" }} onClick={() => closePopup("serviceForm")}>Close</button>
                                         </div>
-                                        <div className="flex justify-around items-center">
-                                            <div className="flex flex-col h-14 w-60">
-                                                <label className="font-semibold text-[#d4cca3] my-2">Field Label : </label>
-                                                <Input type="Select" onChange={(e) => { setField(e.target.value) }} placeholder='Enter Here' />
-                                            </div>
-                                            <div className="flex flex-col h-14 w-60">
-                                                <label className="font-semibold text-[#d4cca3] my-2">Field Type : </label>
-                                                <Select onChange={(e) => { setFieldtype(e) }}>
-                                                    <Select.Option value="text">Text</Select.Option>
-                                                    <Select.Option value="number">Number</Select.Option>
-                                                    <Select.Option value="password">Password</Select.Option>
-                                                    <Select.Option value="checkbox">Checkbox</Select.Option>
-                                                    <Select.Option value="button">Button</Select.Option>
-                                                    <Select.Option value="email">Email</Select.Option>
-                                                    <Select.Option value="radio">Radio</Select.Option>
-                                                </Select>
-                                            </div>
-                                            <Button onClick={() => {
-                                                setFieldsDatatype((prev) => {
-                                                    return ([...prev, { fieldName, fieldType }])
-                                                })
-                                            }} className="relative" style={{ backgroundColor: "#292c28d9", color: "white", fontWeight: "bold" }}>Add</Button>
 
+                                        <div className="w-[80%] bg-white rounded-2xl mb-8 px-5 py-8">
+                                            <div className="flex justify-start flex-wrap">
+                                                {keywords.map(((val, indx) => {
+                                                    return (
+                                                        <Button key={indx} onClick={(e) => {
+                                                            addFormField(val);
+                                                        }}
+                                                            type="primary" className="btn-5">{val.fieldName}</Button>
+                                                    )
+                                                }))
+
+                                                }
+                                            </div>
+                                            <div className="flex justify-around items-center mt-3">
+                                                <div className="flex flex-col h-14 w-60">
+                                                    <label className="font-semibold text-[#494947] my-2">Field Label : </label>
+                                                    <Input type="Select" onChange={(e) => { setField(e.target.value) }} placeholder='Enter Here' />
+                                                </div>
+                                                <div className="flex flex-col h-14 w-60">
+                                                    <label className="font-semibold text-[#494947] my-2">Field Type : </label>
+                                                    <Select onChange={(e) => { setFieldtype(e) }}>
+                                                        <Select.Option value="text">Text</Select.Option>
+                                                        <Select.Option value="number">Number</Select.Option>
+                                                        <Select.Option value="password">Password</Select.Option>
+                                                        <Select.Option value="checkbox">Checkbox</Select.Option>
+                                                        <Select.Option value="button">Button</Select.Option>
+                                                        <Select.Option value="email">Email</Select.Option>
+                                                        <Select.Option value="radio">Radio</Select.Option>
+                                                    </Select>
+                                                </div>
+                                                <Button onClick={() => {
+                                                    setFieldsDatatype((prev) => {
+                                                        return ([...prev, { fieldName, fieldType }])
+                                                    })
+                                                }} className="relative" style={{ backgroundColor: "#292c28d9", color: "white", fontWeight: "bold" }}>Add</Button>
+
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div className="flex justify-center w-full items-center ">
-                                        <ServiceForm fields={fields} formId={ele?._id} />
-                                    </div>
+                                        <div className="flex justify-center w-full items-center ">
+                                            <ServiceForm fields={fields} formId={ele?._id} />
+                                        </div>
 
-                                </div>
-                            </div>
+                                    </div>
+                                </div> : <></>
+                            }
                             <div className="flex justify-around w-[48%]">
                                 <div className="flex flex-col justify-around center my-8">
                                     <img className="h-32 w-32 object-cover bg-slate-200" src="images/swimming.jpg" alt="Profile Photo" />

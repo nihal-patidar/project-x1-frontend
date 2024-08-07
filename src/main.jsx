@@ -9,10 +9,10 @@ import { ServiceContectProvider } from './context/ServiceContext.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <ServiceContectProvider>
-  <DataState>
-  <UserContextProvider>
-    <App />
-  </UserContextProvider>
-  </DataState>
+    <DataState>
+      <UserContextProvider>
+        <App />
+      </UserContextProvider>
+    </DataState>
   </ServiceContectProvider>
 )

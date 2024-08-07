@@ -19,7 +19,6 @@ import ValidatorCard from './components/serviceComp/ValidatorCard';
 import TicketPage from './pages/TicketPage';
 import ValidatorWorkSpace from './components/serviceComp/ValidatorWorkSpace';
 import VisitorStepForTicket from './visitor/VisitorStepForTicket';
-import Scaner from './components/Scaner';
 import Dashboard from './components/Dashboard';
 const router= createBrowserRouter([
   {
@@ -44,6 +43,7 @@ const router= createBrowserRouter([
       },
       {
         path:"/home/validators",
+// <<<<<<< HEAD
         element:<Auth><ValidatorWorkSpace></ValidatorWorkSpace></Auth>
       },
       {
@@ -69,30 +69,12 @@ const router= createBrowserRouter([
     element:<FormPage/>
   },
   {
-    path:"ticket/:loweruserId",
-    element:<TicketPage/>
-  },
-  {
     path:"/ticket-generation",
     element: <VisitorStepForTicket/>
-  }
-  // test route
-  ,
-  {
-    path:"/scanner",
-    element:<Scaner/>
-  }
-
+  },
 ])
 function App() {
-  // let{setUserData}= useContext(UserContext);
-  // useEffect(async()=>{
-  //   try{
-  //     await axios.post("http://localhost:3000/api/get-user",{})
-  //   }catch(err){
 
-  //   }
-  // },[])
   return (
     <>
     <RouterProvider router={router}></RouterProvider>
