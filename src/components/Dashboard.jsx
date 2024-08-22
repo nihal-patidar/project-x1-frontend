@@ -11,47 +11,77 @@ function Dashboard() {
 
     const data = [
         {
-          name: 'Page A',
+          name: 'Jan',
           uv: 4000,
           pv: 2400,
           amt: 2400,
         },
         {
-          name: 'Page B',
+          name: 'Feb',
           uv: 3000,
           pv: 1398,
           amt: 2210,
         },
         {
-          name: 'Page C',
+          name: 'March',
           uv: 2000,
           pv: 9800,
           amt: 2290,
         },
         {
-          name: 'Page D',
+          name: 'April',
           uv: 2780,
           pv: 3908,
           amt: 2000,
         },
         {
-          name: 'Page E',
+          name: 'May',
           uv: 1890,
           pv: 4800,
           amt: 2181,
         },
         {
-          name: 'Page F',
+          name: 'June',
           uv: 2390,
           pv: 3800,
           amt: 2500,
         },
         {
-          name: 'Page G',
+          name: 'July',
           uv: 3490,
           pv: 4300,
           amt: 2100,
         },
+        {
+            name: 'August',
+            uv: 3490,
+            pv: 4300,
+            amt: 2100,
+          },
+          {
+            name: 'September',
+            uv: 3490,
+            pv: 4300,
+            amt: 2100,
+          },
+          {
+            name: 'Octorber',
+            uv: 3490,
+            pv: 4300,
+            amt: 2100,
+          },
+          {
+            name: 'Nubember',
+            uv: 3490,
+            pv: 4300,
+            amt: 2100,
+          },
+          {
+            name: 'December',
+            uv: 3490,
+            pv: 4300,
+            amt: 2100,
+          },
       ];
      
 
@@ -64,21 +94,21 @@ function Dashboard() {
         <div className='main-cards'>
             <div className='card'>
                 <div className='card-inner'>
-                    <h3>PRODUCTS</h3>
+                    <h3>SERVICES</h3>
                     <BsFillArchiveFill className='card_icon'/>
                 </div>
                 <h1>300</h1>
             </div>
             <div className='card'>
                 <div className='card-inner'>
-                    <h3>CATEGORIES</h3>
+                    <h3>VALIDATOR</h3>
                     <BsFillGrid3X3GapFill className='card_icon'/>
                 </div>
                 <h1>12</h1>
             </div>
             <div className='card'>
                 <div className='card-inner'>
-                    <h3>CUSTOMERS</h3>
+                    <h3>USERS</h3>
                     <BsPeopleFill className='card_icon'/>
                 </div>
                 <h1>33</h1>

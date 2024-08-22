@@ -6,6 +6,8 @@ import {
     BuildingLibraryIcon,
 } from "@heroicons/react/24/outline";
 
+import { useParams } from "react-router-dom";
+
 
 // import { ServiceContext } from "../../context/ServiceContext"; 
 import Payment from "./Payment"
@@ -16,9 +18,9 @@ export function VisitorStepForTicket() {
     const [activeStep, setActiveStep] = React.useState(0);
     const [isLastStep, setIsLastStep] = React.useState(false);
     const [isFirstStep, setIsFirstStep] = React.useState(false);
-
+    
     const [visitorData, setVisitorData] = useState();
-    const [formId, setFormId] = useState("66a8dc89c0d16adfc0b471c7");
+    const [formId, setFormId] = useState("66af55062686d84fb92b6798");
 
     const handleNext = () => !isLastStep && setActiveStep((cur) => cur + 1);
     const handlePrev = () => !isFirstStep && setActiveStep((cur) => cur - 1);
