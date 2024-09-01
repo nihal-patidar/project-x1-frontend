@@ -20,7 +20,12 @@ import TicketPage from './pages/TicketPage';
 import ValidatorWorkSpace from './components/serviceComp/ValidatorWorkSpace';
 import VisitorStepForTicket from './visitor/VisitorStepForTicket';
 import Dashboard from './components/Dashboard';
+import Landing from "./components/src/App.jsx";
 const router= createBrowserRouter([
+  {
+    path:"/",
+    element:<Landing/>
+  },
   {
     path:"/register",
     element:<RegistrationPage/>
