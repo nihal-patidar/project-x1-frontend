@@ -37,7 +37,7 @@ const ServiceCard = () => {
         fieldName: "Name", fieldDatatype: "text"
     }, { fieldName: "Email", fieldDatatype: "text" }, { fieldName: "Gender", fieldDatatype: "select" }, { fieldName: "MobileNo.", fieldDatatype: "text" }, { fieldName: "Address", fieldDatatype: "text" },]
 
-    let { serviceFormData, setServiceFormData } = useContext(ServiceContext);
+    let { services, setServices } = useContext(ServiceContext);
     let token = localStorage.getItem("userData");
     useEffect(() => {
         serviceFormHandler();
@@ -49,7 +49,7 @@ const ServiceCard = () => {
             }
         }).then((response) => {
             console.log("services Data -- ", response.data.services);
-            setServiceFormData(response.data.services);
+            setServices(response.data.services);
             // console.log(response.data.services);
         }).catch((err) => {
             console.log(err.response.data);
@@ -61,15 +61,33 @@ const ServiceCard = () => {
     return (
         <div className="flex flex-col gap-2 w-full h-full bg-white shadow-inner rounded-lg overflow-y-auto justify-start items-center my-2 border list-box">
 
-            {serviceFormData &&
-                serviceFormData.map((ele, index) => {
-                    console.log("elements services", ele);
+            {services &&
+                services.map((ele, index) => {
+                    console.log("service no." , index ," -> ", ele);
                     return (
                         <div key={index} className='flex w-[95%] h-64 bg-white shadow-lg border-2 border-orange-200 rounded-lg my-2'>
+                            
+                            <div className="flex justify-around w-[48%]">
+                                <div className="flex flex-col justify-around center my-8">
+                                    <img className="h-32 w-32 object-cover bg-slate-200" src="images/swimming.jpg" alt="Profile Photo" />
+                                    <h2 className="text-xl font-bold mb-2">{ele.service_name}</h2>
+                                </div>
+                                <div className="mr-6 mt-6">
+                                    <p className="text-gray-600 mb-2 service_fields">
+                                        <span className="font-semibold"> Validator Count : </span><br />
+                                        <span>{ele.validater_list.length}</span>
+                                    </p>
+                                    <p className="text-gray-600 mb-2 service_fields"><span className="font-semibold">Ticket :</span><br /><span>{ele.ticket_price}</span></p>
+                                    <p className="text-gray-600 mb-2 service_fields"><span className="font-semibold">Validity :</span><br /><span>{ele.ticket_validity}</span></p>
+                                    <p className="text-gray-600 mb-2 service_fields"><span className="font-semibold">Address :</span><br /><span>{ele.service_address}</span></p>
+                                </div>
+                            </div>
+                            <div className="w-[48%]">
+                                <ServiceTabs formData={ele.formData} formUrl={ele.service_url} formQr={ele.service_qr} formId={ele._id} service_id={ele._id}></ServiceTabs>
+                            </div>
                             {isOpen.serviceForm ?
                                 <div className={`popup-window bg-white h-[80%] w-[1200px] overflow-y-auto border-2 border-gray-500 absolute top-20 left-44 box-border px-7 list-box`}>
                                     <div className='service-form-builder py-4 flex flex-col items-center w-full mt-6   ' >
-
 
                                         <div className="flex justify-between w-full">
                                             <h2 className="text-[#872323] 
@@ -124,23 +142,6 @@ const ServiceCard = () => {
                                     </div>
                                 </div> : <></>
                             }
-                            <div className="flex justify-around w-[48%]">
-                                <div className="flex flex-col justify-around center my-8">
-                                    <img className="h-32 w-32 object-cover bg-slate-200" src="images/swimming.jpg" alt="Profile Photo" />
-                                    <h2 className="text-xl font-bold mb-2">{ele.service_name}</h2>
-                                </div>
-                                <div className="mr-6 mt-6">
-                                    <p className="text-gray-600 mb-2 service_fields">
-                                        <span className="font-semibold"> Validator Count : </span><br />
-                                        <span>{ele.validater_list.length}</span></p>
-                                    <p className="text-gray-600 mb-2 service_fields"><span className="font-semibold">Ticket :</span><br /><span>{ele.ticket_price}</span></p>
-                                    <p className="text-gray-600 mb-2 service_fields"><span className="font-semibold">Validity:</span><br /><span>{ele.ticket_validity}</span></p>
-                                    <p className="text-gray-600 mb-2 service_fields"><span className="font-semibold">Address:</span><br /><span>{ele.service_address}</span></p>
-                                </div>
-                            </div>
-                            <div className="w-[48%]">
-                                <ServiceTabs formData={ele.formData} formUrl={ele.service_url} formQr={ele.service_qr} formId={ele._id} service_id={ele._id}></ServiceTabs>
-                            </div>
                         </div>
                     )
                 })

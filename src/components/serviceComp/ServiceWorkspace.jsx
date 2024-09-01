@@ -8,6 +8,7 @@ import { BiExit } from 'react-icons/bi';
 import ServiceForm from "./ServiceForm";
 import { UserContext } from "../../context/UserContext";
 import { StepperWithContent } from "./AddService";
+import { UpdateServiceForm } from "./UpdateServiceData";
 const ServiceWorkSpace = () => {
     const { fields, setFieldsDatatype, isOpen, setIsOpen , openPopup,setAllValidator, closePopup} = useContext(dataContext);
     let { openTab, setOpenTab } = useContext(UserContext);
@@ -87,6 +88,21 @@ const ServiceWorkSpace = () => {
                             <div onClick={() => closePopup("addServiceForm")} className="icon absolute top-0 right-0 p-3 rounded-full bg-gray-300 cursor-pointer"><BiExit /></div>
                             <div className="content">
                                 <StepperWithContent />
+                            </div>
+                        </div>
+                    </div>
+                </>
+            ) : (
+                <></>
+            )
+            }
+            {isOpen.updateServiceForm ? (
+                <>
+                    <div className={`container absolute top-0 left-0 w-full h-screen px-[10rem] py-[1rem]`}>
+                        <div className="popup w-full bg-gray-50 border shadow-md rounded-md max-h-[100vh] relative">
+                            <div onClick={() => closePopup("updateServiceForm")} className="icon absolute top-0 right-0 p-3 rounded-full bg-gray-300 cursor-pointer"><BiExit/></div>
+                            <div className="content">
+                                <UpdateServiceForm />
                             </div>
                         </div>
                     </div>

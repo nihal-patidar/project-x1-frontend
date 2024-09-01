@@ -6,9 +6,10 @@ export const dataContext = createContext('default');
 export const DataState = (props) => {
     const [fields , setFieldsDatatype] = useState([]);
     const [isOpen , setIsOpen] = useState({formPreView : false ,serviceForm : false,
-    qrPreView: false , addValidatorForm : false , registerCompany : false , form1 : true , form2 : false , login : false , addServiceForm : false})
+    qrPreView: false , addValidatorForm : false , registerCompany : false , form1 : true , form2 : false , login : false , addServiceForm : false,updateServiceForm : false})
     const [allValidators, setAllValidator] = useState([])
     const [users , setUsers] = useState([])
+    const [currentServiceFormId , setCurrentServiceFormId] = useState();
 
     const Heloo = ()=>{
         console.log("hello, ram ram ji")
@@ -35,7 +36,7 @@ export const DataState = (props) => {
     
     return (
         <dataContext.Provider value={
-            {Heloo ,fields , setFieldsDatatype ,isOpen , setIsOpen , allValidators, setAllValidator ,AddValidator ,openPopup , closePopup,users , setUsers}
+            {Heloo ,currentServiceFormId , setCurrentServiceFormId,fields , setFieldsDatatype ,isOpen , setIsOpen , allValidators, setAllValidator ,AddValidator ,openPopup , closePopup,users , setUsers}
         }>
             {props.children}
         </dataContext.Provider>

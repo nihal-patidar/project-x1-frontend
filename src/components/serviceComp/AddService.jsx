@@ -23,19 +23,20 @@ export function StepperWithContent() {
   const handleNext = () => !isLastStep && setActiveStep((cur) => cur + 1);
   const handlePrev = () => !isFirstStep && setActiveStep((cur) => cur - 1);
 
-  let {serviceFormData,setServiceFormData}= useContext(ServiceContext);
+  let {services , setServices}= useContext(ServiceContext);
   let {register,handleSubmit,reset} = useForm();
   let token= localStorage.getItem("userData");
   const serviceFormHandler= async(data)=>{
 
     console.log("heloo hi", data);
+    console.log("result to be submitted yyyyyyyyy",register)
    await axios.put("http://localhost:3000/service/addService",data,{
     headers:{
         "Authorization":`Bearer ${token}`
     }
    }).then((response)=>{
     console.log(response);
-    setServiceFormData((prev)=>[...prev,response.data.service]);
+    setServices((prev)=>[...prev,response.data.service]);
     toast.success("Add service Sunccefully!");
     closePopup("addServiceForm");
     reset();

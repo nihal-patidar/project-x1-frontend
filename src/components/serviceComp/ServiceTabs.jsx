@@ -2,10 +2,11 @@ import ValidatorInService from './ValidatorInService';
 import QRpreView from './QRpreView';
 import FormPreView from './FormPreView';
 
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useState,useContext } from 'react';
 import { Button, Checkbox, Divider, Tabs } from 'antd';
+import { dataContext, DataState } from '../../context/DataState';
 const CheckboxGroup = Checkbox.Group;
-const operations = <Button>Extra Action</Button>;
+
 const OperationsSlot = {
   left: <Button className="tabs-extra-demo-button">Left Extra Action</Button>,
   right: <Button>Right Extra Action</Button>,
@@ -13,6 +14,7 @@ const OperationsSlot = {
 
 const ServiceTabs = ({formData=null,formQr=null,formUrl=null,formId=null,service_id}) => {
   // {formData=null,formQr=null,formUrl=null,formId=null}
+  const {currentServiceFormId , setCurrentServiceFormId, openPopup} = useContext(dataContext);
     let items = [
     {
         label: 'Validator',
@@ -43,10 +45,13 @@ const ServiceTabs = ({formData=null,formQr=null,formUrl=null,formId=null,service
   }, [position]);
   return (
     <>
-      <Tabs tabBarExtraContent={operations} items={items} />
+      <Tabs tabBarExtraContent={<Button onClick={()=>{
+      setCurrentServiceFormId(service_id);
+      openPopup("updateServiceForm");
+      }}>Edit </Button>} items={items} />
+
     </>
   );
 };
-
 
 export default ServiceTabs;

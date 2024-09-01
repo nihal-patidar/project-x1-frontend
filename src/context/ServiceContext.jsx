@@ -4,14 +4,14 @@ const ServiceContext= createContext();
 
 const ServiceContectProvider= (props)=>{
 
-    var [serviceFormData,setServiceFormData]= useState([]);
+    var [services,setServices]= useState([]);
 
-    var services= {
-      serviceFormData,
-      setServiceFormData,
+    var service= {
+      services,
+      setServices,
     }
     return(
-        <ServiceContext.Provider value={services}>
+        <ServiceContext.Provider value={service}>
             {props.children}
         </ServiceContext.Provider>
     )
