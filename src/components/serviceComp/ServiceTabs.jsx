@@ -1,12 +1,20 @@
 import ValidatorInService from './ValidatorInService';
 import QRpreView from './QRpreView';
 import FormPreView from './FormPreView';
+<<<<<<< HEAD
 
 import React, { useMemo, useState,useContext } from 'react';
+=======
+import React, { useMemo, useState } from 'react';
+>>>>>>> 82de2f5c54fa37fb213633fee3bd696d6262b9fd
 import { Button, Checkbox, Divider, Tabs } from 'antd';
 import { dataContext, DataState } from '../../context/DataState';
 const CheckboxGroup = Checkbox.Group;
+<<<<<<< HEAD
 
+=======
+const operations = <Button> Edit </Button>;
+>>>>>>> 82de2f5c54fa37fb213633fee3bd696d6262b9fd
 const OperationsSlot = {
   left: <Button className="tabs-extra-demo-button">Left Extra Action</Button>,
   right: <Button>Right Extra Action</Button>,

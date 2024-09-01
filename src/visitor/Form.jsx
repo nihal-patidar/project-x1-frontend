@@ -41,8 +41,8 @@ const Form = ({ formId, setVisitorData }) => {
             visitorData: { visitor_data: data, validater_list: validatorList }
         })
             .then((response) => {
-                console.log("visitors data : ", response.data.visitorData);
-                setVisitorData(response.data.visitorData);
+                console.log("visitors data : ", response.data);
+                setVisitorData({...response.data.visitorData,qrData:response.data.qrData});
 
                 toast.success("Visitor Data Succefully Added !!!");
             }).catch((err) => {

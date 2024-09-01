@@ -3,7 +3,7 @@ import React from 'react';
 const Ticket = ({data}) => {
     
     // console.log("Visitor data format from Ticket", props.data.visitor_data);
-    console.log("Visitor data format from Ticket", data.visitorData.visitor_data);
+    console.log("Visitor data format from Ticket", data);
 
     let Element = [];
     const plotTicket = () => {
@@ -16,13 +16,12 @@ const Ticket = ({data}) => {
         return Element;
     }
     return (
-        <div className='flex flex-col items-center w-full py-4' >
+        <div className='flex flex-col items-center w-full py-4 bg-white' >
             <div className='flex flex-col w-[250px]'>
-
                 {plotTicket()}
             </div>
             <div className='flex flex-col w-full items-center mt-20'>
-                <div style={{ height: '120px', width: 'auto' }} dangerouslySetInnerHTML={{ __html: data.visitorData.qrcode }} />
+                <div style={{ height: '120px', width: 'auto' }} dangerouslySetInnerHTML={{ __html: data.visitorData.qrData}} />
                 <div className='flex flex-col w-[140px] text-[#5e5c5c] mt-16'>
                     <p >Ticket Service</p>
                     <p>Provided By :</p>
@@ -31,7 +30,6 @@ const Ticket = ({data}) => {
                     <p>asksolutionheap@gmail.com</p>
                 </div>
             </div>
-
         </div>
     );
 }
