@@ -18,6 +18,7 @@ export function StepperWithContent() {
   const [activeStep, setActiveStep] = React.useState(0);
   const [isLastStep, setIsLastStep] = React.useState(false);
   const [isFirstStep, setIsFirstStep] = React.useState(false);
+  const [serviceImage, setServiceImage] = React.useState(null);
   const {closePopup} = useContext(dataContext)
  
   const handleNext = () => !isLastStep && setActiveStep((cur) => cur + 1);
@@ -30,9 +31,13 @@ export function StepperWithContent() {
 
     console.log("heloo hi", data);
     console.log("result to be submitted yyyyyyyyy",register)
-   await axios.put("http://localhost:3000/service/addService",data,{
+   await axios.put("http://localhost:3000/service/addService",{
+    data : data,
+    image : serviceImage
+   },{
     headers:{
-        "Authorization":`Bearer ${token}`
+        "Authorization":`Bearer ${token}`,
+        "Content-Type": 'multipart/form-data'
     }
    }).then((response)=>{
     console.log(response);
@@ -46,7 +51,7 @@ export function StepperWithContent() {
    })
   }
   return (
-    <form onSubmit={handleSubmit(serviceFormHandler)}>
+    <form onSubmit={handleSubmit(serviceFormHandler)} action="">
     <div className="w-full px-24 py-4 flex flex-col gap-4">
         <div className="steps">
       <Stepper
@@ -80,7 +85,7 @@ export function StepperWithContent() {
       </div>
       <div className="forms mt-10">
         {
-            activeStep==0? <ServiceDetails register={register}/>: <ServiceBankForm register={register}/>
+            activeStep==0? <ServiceDetails register={register} setServiceImage={setServiceImage}/>: <ServiceBankForm register={register}/>
         }
       </div>
       <div className="flex justify-between">

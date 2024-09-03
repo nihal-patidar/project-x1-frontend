@@ -54,6 +54,7 @@ const Profile = () => {
     const updateName = (e) => {
         setUsername(e.target.value);
     }
+
     const updateEmail = (e) => {
         setEmail(e.target.value);
     }
@@ -64,7 +65,7 @@ const Profile = () => {
                 <div className="top text-center">
                     <h2 className="text-2xl font-bold">Profile</h2>
                     {!editable ?
-                        <img src={`../../public/${sendImage}`} alt="image" className="w-[50px] rounded-full" />
+                        <img src={userData.image} alt="image" className="w-[50px] rounded-full" />
                         :
                         <img src={image} alt="image" className="w-[50px] rounded-full" />
                     }

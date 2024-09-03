@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import 
 { BsFillArchiveFill, BsFillGrid3X3GapFill, BsPeopleFill, BsFillBellFill}
  from 'react-icons/bs'
@@ -6,8 +6,24 @@ import
  import 
  { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, LineChart, Line } 
  from 'recharts';
+import { ServiceContext } from '../context/ServiceContext';
+import { dataContext } from '../context/DataState';
 
 function Dashboard() {
+
+    const {services} = useContext(ServiceContext);
+    const {allValidators , users} = useContext(dataContext);
+
+    const [service_count , setService_Count] = useState();
+    const [validator_count , setValidator_Count] = useState();
+    const [user_count , setUser_Count] = useState();
+
+    useEffect(()=>{
+      setService_Count(services.length);
+      setValidator_Count(allValidators.length);
+      setUser_Count(users.length);
+    },[services,allValidators]);
+
 
     const data = [
         {
@@ -97,21 +113,21 @@ function Dashboard() {
                     <h3>SERVICES</h3>
                     <BsFillArchiveFill className='card_icon'/>
                 </div>
-                <h1>300</h1>
+                <h1>{service_count}</h1>
             </div>
             <div className='card'>
                 <div className='card-inner'>
                     <h3>VALIDATOR</h3>
                     <BsFillGrid3X3GapFill className='card_icon'/>
                 </div>
-                <h1>12</h1>
+                <h1>{validator_count}</h1>
             </div>
             <div className='card'>
                 <div className='card-inner'>
                     <h3>USERS</h3>
                     <BsPeopleFill className='card_icon'/>
                 </div>
-                <h1>33</h1>
+                <h1>{user_count}</h1>
             </div>
             <div className='card'>
                 <div className='card-inner'>

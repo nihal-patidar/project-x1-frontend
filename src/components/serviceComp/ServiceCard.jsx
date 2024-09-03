@@ -69,7 +69,7 @@ const ServiceCard = () => {
                             
                             <div className="flex justify-around w-[48%]">
                                 <div className="flex flex-col justify-around center my-8">
-                                    <img className="h-32 w-32 object-cover bg-slate-200" src="images/swimming.jpg" alt="Profile Photo" />
+                                    <img className="h-32 w-32 object-cover bg-slate-200" src={ele.service_image_url} alt="Profile Photo" />
                                     <h2 className="text-xl font-bold mb-2">{ele.service_name}</h2>
                                 </div>
                                 <div className="mr-6 mt-6">
