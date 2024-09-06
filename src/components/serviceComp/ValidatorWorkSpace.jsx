@@ -1,9 +1,10 @@
 import React, { useState, useContext } from "react";
 import Validator from "./Validator";
-import { Button } from "antd";
+import { Button } from "@material-tailwind/react";
 import { PlusOutlined } from '@ant-design/icons';
 import ValidatorForm from "./ValidatorForm";
 import { dataContext } from '../../context/DataState';
+import "../../index.css"
 
 
 
@@ -12,17 +13,19 @@ const ValidatorWorkSpace = () => {
     console.log("List of Validator", allValidators);
 
     return (<>
-        <div className="flex flex-col w-[90%] h-[85vh] shadow-lg workspace">
+        <div className="flex flex-col workspace">
+        <div className="btn1">
+          <Button
+            color="blue"
+            size="md"
+            onClick={() => openPopup("addValidatorForm")}
+          >
+            <PlusOutlined /> Add Validator
+          </Button>
+        </div>
             <div className="flex flex-col w-full h-full">
-                <div className="h-20 flex items-center workspace-window">
-                    <Button
-                        onClick={() => openPopup("addValidatorForm")}
-                        type="primary" icon={<PlusOutlined />} size="large" style={{
-                            backgroundColor: "blue"
-                            , position: "relative", left: "85%", top: "15px"
-                        }}>Add Validator</Button>
-                </div>
-                <div className="center w-[98%] h-[90%] m-3 overflow-y-auto workspace-contents list-of-validators">
+                
+                <div className="center w-[98%] h-full m-3 overflow-y-auto workspace-contents list-of-validators">
                     {
                         allValidators.map((validator, index) => {
                             return (

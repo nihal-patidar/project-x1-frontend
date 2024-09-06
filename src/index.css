@@ -1,70 +1,94 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 body {
-    width: 100vw;
-    height: 100vh;
-    box-sizing: border-box;
+  width: 100vw;
+  height: 100vh;
+  box-sizing: border-box;
 }
 
 :root {
-    font-family: "Poppins", sans-serif;
-    color-scheme: dark;
-  }
-  
+  font-family: "Poppins", sans-serif;
+  color-scheme: dark;
+  color: white;
+  --bg-workspace: #ffffff;
+  --white: #ffffff;
+  margin: 0px;
+  padding: 0px;
+}
 
 body::-webkit-scrollbar {
-    display: none;               /* width of the entire scrollbar */
-  }
-
-.list-box::-webkit-scrollbar {
-    width: 12px;
-    /* height: 100px; */
-}
-
-.list-box::-webkit-scrollbar-track {
-    background: rgb(54, 53, 51);
-}
-
-.list-box::-webkit-scrollbar-thumb {
-    background-color: rgb(203, 203, 227);
-    border-radius: 20px;
-    border: 3px solid rgb(114, 111, 106);
+  display: none; /* width of the entire scrollbar */
 }
 
 .list-box::-webkit-scrollbar {
-    width: 12px;
-    /* height: 100px; */
+  width: 12px;
+  /* height: 100px; */
 }
 
 .list-box::-webkit-scrollbar-track {
-    background: rgb(54, 53, 51);
+  background: rgb(54, 53, 51);
 }
 
 .list-box::-webkit-scrollbar-thumb {
-    background-color: rgb(203, 203, 227);
-    border-radius: 20px;
-    border: 3px solid rgb(114, 111, 106);
+  background-color: rgb(203, 203, 227);
+  border-radius: 20px;
+  border: 3px solid rgb(114, 111, 106);
+}
+
+.list-box::-webkit-scrollbar {
+  width: 12px;
+  /* height: 100px; */
+}
+
+.list-box::-webkit-scrollbar-track {
+  background: rgb(54, 53, 51);
+}
+
+.list-box::-webkit-scrollbar-thumb {
+  background-color: rgb(203, 203, 227);
+  border-radius: 20px;
+  border: 3px solid rgb(114, 111, 106);
 }
 
 .validator-form::-webkit-scrollbar {
-    width: 12px;
+  width: 12px;
 }
 
 .validator-form::-webkit-scrollbar-track {
-    background: rgb(54, 53, 51);
+  background: rgb(54, 53, 51);
 }
 
 .validator-form::-webkit-scrollbar-thumb {
-    background-color: rgb(203, 203, 227);
-    border-radius: 20px;
-    border: 3px solid rgb(114, 111, 106);
+  background-color: rgb(203, 203, 227);
+  border-radius: 20px;
+  border: 3px solid rgb(114, 111, 106);
 }
 
 .btn-5 {
-    margin-left: 10px ;
+  margin-left: 10px;
+}
+
+.x1-shadow {
+  box-shadow: 0 4px 6px rgba(255, 0, 0, 0.5), 0 1px 3px rgba(255, 0, 0, 0.3);
+}
+
+.workspace {
+  background-color: var(--bg-workspace);
+  height: 85vh;
+  width: 90%;
+  margin: 0px;
+  position: relative;
+  padding: 0px;
+  box-shadow: 0px 0px 4px 6px rgba(219, 211, 211, 0.5);
+}
+
+.btn1 {
+  position: absolute;
+  top : -60px ;
+  right : 0px ;
+  z-index: 10 ;
 }
