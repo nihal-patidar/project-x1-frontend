@@ -61,25 +61,25 @@ export const testimonials = [
 export const features = [
   {
     icon: <BotMessageSquare />,
-    text: "Drag-and-Drop Interface",
+    text: "Ticket Management System",
     description:
-      "Easily design and arrange your VR environments with a user-friendly drag-and-drop interface.",
+      "This Software help you to manage your ticket into digital ticket and validate it by your smart phone.",
   },
   {
     icon: <Fingerprint />,
-    text: "Multi-Platform Compatibility",
+    text: "Form Builder",
     description:
-      "Build VR applications that run seamlessly across multiple platforms, including mobile, desktop, and VR headsets.",
+      "This software help your to save the recode, servay and collecting information.",
   },
   {
     icon: <ShieldHalf />,
-    text: "Built-in Templates",
+    text: "Whatshapp Business Template",
     description:
-      "Jumpstart your VR projects with a variety of built-in templates for different types of applications and environments.",
+      "This temple help you to grow the business throw whatshapp over your connections.",
   },
   {
     icon: <BatteryCharging />,
-    text: "Real-Time Preview",
+    text: "Software Solution",
     description:
       "Preview your VR application in real-time as you make changes, allowing for quick iterations and adjustments.",
   },

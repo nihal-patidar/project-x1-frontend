@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { useContext, useState } from "react";
 import { useForm } from "react-hook-form"
 import axios from "axios";
@@ -7,13 +7,17 @@ import { UserContext } from "../context/UserContext";
 import { useNavigate } from "react-router-dom";
 import { Link } from 'react-router-dom';
 import Input from './Input';
+import { Button } from "@material-tailwind/react";
+import { dataContext} from '../context/DataState';
 const Login = () => {
 
     const { register, handleSubmit } = useForm();
+    var {isOpen , openPopup , closePopup} = useContext(dataContext);
     var { setUserData, setShowLoading } = useContext(UserContext);
     var navigate = useNavigate();
 
     const LonginHandle = async (data) => {
+        console.log("i am logining working");
         setShowLoading((prev) => !prev);
         await axios.post("http://localhost:3000/api/login", {
             email: data.email,
@@ -32,12 +36,12 @@ const Login = () => {
     }
     return (
         <>
-            <form onSubmit={handleSubmit(LonginHandle)} className="flex flex-col items-center justify-center border p-3 rounded-md shadow-md">
+            <form onSubmit={handleSubmit(LonginHandle)} className="flex flex-col items-center justify-center p-3 bg-white w-[20rem] border shadow-md gap-3">
                 <div className="top text-center">
-                    <h2 className="text-2xl font-bold">Registration</h2>
-                    <p>If you have account please login <Link to="/register" className=" text-blue-500">Register</Link></p>
+                    <h2 className="text-2xl font-bold" >Login</h2>
+                    <p>If you have account please login <Link to="/register" onClick={()=>{closePopup("registration")}} className=" text-blue-500">Register</Link></p>
                 </div>
-                <div className="buttom flex flex-col items-start mt-3">
+                <div className="buttom flex flex-col items-start mt-3 gap-3 w-full">
 
 
                     <Input label="Email" name="email" type="email" placeholder="Email"
@@ -48,23 +52,12 @@ const Login = () => {
                         name="password"
                         type="password"
                         {...register("password", { required: true })}>
-
                     </Input>
 
-                    <div className="buttons flex items-center justify-between w-full mt-4">
-                        <Input
-                            type="reset"
-                            bgcolor="bg-red-500"
-                            className="cursor-pointer"
-                            value="Reset"
-                        ></Input>
-
-                        <Input
-                            type="submit"
-                            className="cursor-pointer"
-                            bgcolor="bg-green-500"
-                            value="Submit"
-                        ></Input>
+                    <div className="buttons flex items-center justify-between w-full mt-4 gap-2">
+                        <Button variant='outlined' type="reset">Reset</Button>
+                        
+                        <Button variant='gradient' type="submit">Submit</Button>
                     </div>
                 </div>
                 <Link to="/forget-password"><p>Forget Password</p></Link>
