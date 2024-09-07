@@ -5,7 +5,6 @@ import Workflow from "./components/Workflow";
 import Footer from "./components/Footer";
 import Pricing from "./components/Pricing";
 import Testimonials from "./components/Testimonials";
-import './index.css'
 const App = () => {
   return (
     <>

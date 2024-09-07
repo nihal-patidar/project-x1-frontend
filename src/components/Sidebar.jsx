@@ -1,36 +1,31 @@
-import React from 'react';
-import {BiIdCard} from "react-icons/bi";
-import { Link } from 'react-router-dom';
+import React from "react";
+import { BiIdCard } from "react-icons/bi";
+import { Button } from "@material-tailwind/react";
+import { Link } from "react-router-dom";
 const Sidebar = () => {
-    return (
-        <div className='h-screen px-2 py-4 bg-slate-100 w-[200px]'>
-            <div className='tabs flex flex-col items-start gap-2'>
-                <h2 className='font-bold text-xl'>Features</h2>
-
-                <Link to="/home">
-                <div className="tab flex items-center gap-2 cursor-pointer px-2 py-2 rounded-full bg-slate-200 w-full">
-                    <BiIdCard/>
-                    <p>Dashboard</p>
-                </div>
-                </Link>
-
-                <Link to="/home/services">
-                <div className="tab flex items-center gap-2 cursor-pointer px-2 py-2 rounded-full bg-slate-200 w-full">
-                    <BiIdCard/>
-                    <p>Services</p>
-                </div>
-                </Link>
-                <Link to='/home/validators'>
-
-                <div className="tab flex items-center gap-2 cursor-pointer px-2 py-2 rounded-full bg-slate-200 w-full">
-                    <BiIdCard/>
-                    <p>Validators</p>
-                </div>
-                </Link>
-
-            </div>
-        </div>
-    );
-}
+  return (
+    <div className="h-screen px-2 py-4 bg-slate-100 w-[200px]">
+      <div className="tabs flex flex-col items-start gap-2 w-full">
+        <h2 className="font-bold text-xl">Features</h2>
+        <Link to="/home">
+          <Button ripple={true} variant="text" fullWidth={true} className="flex items-center gap-3 text-white">
+          <BiIdCard /> Dashboard
+          </Button>
+        </Link>
+        <Link to="/home/services">
+          <Button ripple={true} variant="text" fullWidth={true} className="flex items-center gap-3 text-white">
+          <BiIdCard /> Services
+          </Button>
+        </Link>
+        <Link to="/home/validators">
+          <Button ripple={true} variant="text" fullWidth={true} className="flex items-center gap-3 text-white">
+          <BiIdCard /> Validators
+          </Button>
+        </Link>
+        
+      </div>
+    </div>
+  );
+};
 
 export default Sidebar;

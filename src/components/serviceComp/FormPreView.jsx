@@ -7,10 +7,13 @@ import {Link} from "react-router-dom";
 import {
   Button,
 } from 'antd';
+import { ServiceContext } from '../../context/ServiceContext';
 
-const FormPreView = ({formUrl}) => {
+const FormPreView = ({formUrl , service_id}) => {
     const {setIsOpen,setFieldsDatatype} = useContext(dataContext)
     // const { fields, setFieldsDatatype, Heloo,isOpen } = useContext(dataContext);
+    const {currentServiceId , setCurrentServiceId} = useContext(ServiceContext)
+
 
     const openPopup = (match) => {
         setIsOpen((prev)=>{
@@ -37,7 +40,7 @@ const FormPreView = ({formUrl}) => {
     return(
         <div className="flex justify-center items-center w-full h-full">
            <Link to={formUrl}><Button style={{backgroundColor : "blue", color: "white"}}>Form Preview</Button></Link>
-           <Button onClick={()=>{ openPopup("serviceForm")}} style={{backgroundColor : "blue", color: "white"}}>Create Form</Button>
+           <Button onClick={()=>{setCurrentServiceId(service_id); openPopup("serviceForm");}} style={{backgroundColor : "blue", color: "white"}}>Create Form</Button>
         </div>
     )
 }

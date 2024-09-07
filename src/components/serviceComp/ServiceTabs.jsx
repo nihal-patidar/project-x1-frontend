@@ -29,7 +29,7 @@ const ServiceTabs = ({formData=null,formQr=null,formUrl=null,formId=null,service
     {
       label: 'Form',
       key: '3',
-      children: <FormPreView formUrl={formUrl} formId={formId}/>
+      children: <FormPreView formUrl={formUrl} formId={formId} service_id={service_id}/>
     }
 ];
   const [position, setPosition] = useState(['left', 'right']);

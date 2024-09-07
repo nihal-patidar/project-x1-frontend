@@ -18,7 +18,7 @@ import { toast } from 'react-toastify';
 import { ServiceContext } from '../../context/ServiceContext';
 const ServiceForm = ({formId}) => {
   const { fields, setFieldsDatatype, Heloo,isOpen , closePopup } = useContext(dataContext);
-  let {serviceFormData,setServiceFormData}= useContext(ServiceContext);
+  let {services,setServices}= useContext(ServiceContext);
 
   const [componentSize, setComponentSize] = useState('default');
   const onFormLayoutChange = ({ size }) => {
@@ -35,14 +35,14 @@ const ServiceForm = ({formId}) => {
     setFieldsDatatype(arr);
   }
 
-  const formBulder= async()=>{
+  const createFormForVisitor= async()=>{
     console.log(formId);
     await axios.post(`http://localhost:3000/service/addForm/${formId}`,{
         formData:fields
     })
      .then((response)=>{
         console.log(response.data.serviceData);
-        setServiceFormData((prev)=>{
+        setServices((prev)=>{
           return(prev.map((ele)=> {
             if(ele._id == response.data.serviceData._id){
               ele= response.data.serviceData;
@@ -50,7 +50,7 @@ const ServiceForm = ({formId}) => {
             return ele;
           }))
         });
-        toast.success("Form Succefully Created!");
+        toast.success(response.data.msg);
         closePopup("serviceForm");
 
        }).catch((err)=>{
@@ -86,13 +86,7 @@ const ServiceForm = ({formId}) => {
     >
 
       <h1 className='text-xl text-[grey] mb-8'>Form Design</h1>
-      {/* <Form.Item label="Form Size" name="size">
-        <Radio.Group>
-          <Radio.Button value="small">Small</Radio.Button>
-          <Radio.Button value="default">Default</Radio.Button>
-          <Radio.Button value="large">Large</Radio.Button>
-        </Radio.Group>
-      </Form.Item> */}
+      
 
       {fields.map((field, indx) => {
 
@@ -108,7 +102,7 @@ const ServiceForm = ({formId}) => {
 
       }
       <Button  style={{ backgroundColor: "#292c28d9", color: "white", fontWeight: "bolder" }} onClick={() => { console.log("submitted form :", fields)
-           formBulder();
+           createFormForVisitor();
        }}>Submit</Button>
     </Form>
   );
