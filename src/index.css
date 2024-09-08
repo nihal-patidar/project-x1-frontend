@@ -12,7 +12,7 @@ body {
 
 :root {
   font-family: "Poppins", sans-serif;
-  color-scheme: dark;
+  color-scheme: light;
   color: white;
   --bg-workspace: #ffffff;
   --white: #ffffff;
@@ -76,9 +76,22 @@ body::-webkit-scrollbar {
   box-shadow: 0 4px 6px rgba(255, 0, 0, 0.5), 0 1px 3px rgba(255, 0, 0, 0.3);
 }
 
+.popup-window {
+  position: absolute;
+  background-color: rgba(221, 228, 231, 0.716) ;
+  display: flex;
+  justify-content: center ;
+  align-items: center;
+  width: 80vw ;
+  height: 80vh;
+  left: 0px ;
+  top: 0px;
+  z-index: 5;
+  scroll-behavior: none ;
+}
 .workspace {
   background-color: var(--bg-workspace);
-  height: 85vh;
+  height: 89vh;
   width: 90%;
   margin: 0px;
   position: relative;

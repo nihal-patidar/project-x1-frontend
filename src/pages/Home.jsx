@@ -12,10 +12,10 @@ const Home = () => {
     
     var {openTab,setOpenTab}= useContext(UserContext);
     return (
-        <div className='flex w-full h-full'>
-            <Sidebar/>
-            <div className='w-full h-full'> 
+        <div className='flex flex-col w-full h-full'>
               <Navbar/>
+            <div className='flex w-full h-full'> 
+            <Sidebar/>
               <Mainbox/>
             </div>
         </div>

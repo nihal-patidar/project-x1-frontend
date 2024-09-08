@@ -12,10 +12,12 @@ const QRpreView = ({formQr}) => {
 
     return (
         <div className="flex justify-center items-center w-full h-full flex-col">
+            <div className="flex flex-col items-center w-full">
+            {formQr ? (<>
+
+            <div style={{ height: '150px', width: 'auto' }} dangerouslySetInnerHTML={{ __html: formQr }} />
             <Button onClick={()=>openPopup("qrPreView")} style={{ backgroundColor: "blue", color: "white" }}>Download QR</Button>
-            <div>
-            {formQr ? (
-            <div style={{ height: '50px', width: 'auto' }} dangerouslySetInnerHTML={{ __html: formQr }} />
+            </>
             ) : (
             <p>Loading SVG...</p>
              )}
