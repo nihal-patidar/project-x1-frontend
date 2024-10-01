@@ -5,15 +5,17 @@ import { useForm } from "react-hook-form"
 import axios from "axios";
 import { toast } from "react-toastify";
 import { UserContext } from "../context/UserContext";
+
 const Profile = () => {
     const { register, handleSubmit } = useForm();
     var { setShowLoading, userData, image, setImage, setUserData, sendImage, setSendImage } = useContext(UserContext);
     var [editable, setEditable] = useState(false);
     var [username, setUsername] = useState(userData?.name);
     var [email, setEmail] = useState(userData?.email);
+
     useEffect(() => {
         setSendImage(userData.image);
-    }, [])
+    }, []);
 
     const onSubmitHandler = async (data) => {
         setShowLoading((prev) => !prev);
@@ -38,9 +40,9 @@ const Profile = () => {
             setShowLoading(false);
             console.log("error data", error.response.data);
             toast(error.response.data.msg);
-        })
-
+        });
     }
+
     const previewImage = (e) => {
         let value = e.target.files[0];
         setImage(URL.createObjectURL(value));
@@ -61,62 +63,72 @@ const Profile = () => {
 
     return (
         <>
-            <form onSubmit={handleSubmit(onSubmitHandler)} action="" className="flex flex-col items-center justify-center border p-3 rounded-md shadow-md">
+            <form 
+                onSubmit={handleSubmit(onSubmitHandler)} 
+                action="" 
+                className="flex flex-col items-center justify-center border h-[500px] w-[900px] p-6 rounded-md shadow-md text-white">
                 <div className="top text-center">
-                    <h2 className="text-2xl font-bold">Profile</h2>
+                    <h2 className="text-3xl font-bold mb-4">Profile</h2>
                     {!editable ?
-                        <img src={userData.image} alt="image" className="w-[50px] rounded-full" />
+                        <img src={userData.image} alt="Profile" className="w-[80px] h-[80px] rounded-full object-cover mb-4 border-2 border-gray-500" />
                         :
-                        <img src={image} alt="image" className="w-[50px] rounded-full" />
+                        <img src={image} alt="Profile Preview" className="w-[80px] h-[80px] rounded-full object-cover mb-4 border-2 border-gray-500" />
                     }
                 </div>
-                <div className="buttom flex flex-col items-start mt-3">
+                <div className="bottom flex flex-col items-start h-1/2 justify-between mt-3 w-full">
                     <Input
                         name="image"
                         type="file"
                         preview={previewImage}
                         disabled={!editable}
+                        className="text-white"
                         {...register("image")}></Input>
-                    <Input label="Name" placeholder="Name
-                "
+
+                    <Input 
+                        label="Name" 
+                        placeholder="Name" 
                         name="name"
-                        type="text"
+                        type="text" 
                         disabled={!editable}
                         updateName={updateName}
                         value={username}
-                        {...register("name", { required: true })}></Input>
+                        className="bg-gray-700 text-white border-gray-500 w-full mb-4 p-2 rounded-md focus:outline-none focus:border-blue-500"
+                        {...register("name", { required: true })}>
+                    </Input>
 
-                    <Input label="Email" placeholder="Email"
+                    <Input 
+                        label="Email" 
+                        placeholder="Email" 
                         name="email"
                         type="email"
                         disabled={!editable}
                         updateEmail={updateEmail}
                         value={email}
-                        {...register("email", { required: true })}></Input>
+                        className="bg-gray-700 text-white border-gray-500 w-full mb-4 p-2 rounded-md focus:outline-none focus:border-blue-500"
+                        {...register("email", { required: true })}>
+                    </Input>
+
                     <div className="mt-4 flex">
-                        {!editable ?
+                        {!editable ? (
                             <Input
                                 type="button"
-                                className="cursor-pointer"
-                                bgcolor="bg-blue-500"
+                                className="cursor-pointer bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-500"
                                 value="Edit"
                                 makeEditable={makeEditable}
                             ></Input>
-                            :
+                        ) : (
                             <Input
                                 type="submit"
-                                className="cursor-pointer"
-                                bgcolor="bg-green-500"
+                                className="cursor-pointer bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-500"
                                 value="Update"
                                 makeEditable={makeEditable}
                             ></Input>
-                        }
+                        )}
                     </div>
                 </div>
-
             </form>
         </>
-    )
+    );
 }
 
 export default Profile;

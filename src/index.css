@@ -4,6 +4,13 @@
 @tailwind components;
 @tailwind utilities;
 
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px #ffffff inset !important;
+  -webkit-text-fill-color: black !important;
+}
+
 body {
   width: 100vw;
   height: 100vh;
@@ -12,12 +19,16 @@ body {
 
 :root {
   font-family: "Poppins", sans-serif;
-  color-scheme: light;
-  color: white;
+  color-scheme: dark;
   --bg-workspace: #ffffff;
   --white: #ffffff;
   margin: 0px;
   padding: 0px;
+}
+.x1-login-box {
+  /* background-image: url("H:\project-x1-frontend\src\assets\images\OR4B0S0.jpg"); */
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 body::-webkit-scrollbar {
@@ -78,16 +89,16 @@ body::-webkit-scrollbar {
 
 .popup-window {
   position: absolute;
-  background-color: rgba(221, 228, 231, 0.716) ;
+  background-color: rgba(221, 228, 231, 0.716);
   display: flex;
-  justify-content: center ;
+  justify-content: center;
   align-items: center;
-  width: 80vw ;
+  width: 80vw;
   height: 80vh;
-  left: 0px ;
+  left: 0px;
   top: 0px;
   z-index: 5;
-  scroll-behavior: none ;
+  scroll-behavior: none;
 }
 .workspace {
   background-color: var(--bg-workspace);
@@ -101,7 +112,7 @@ body::-webkit-scrollbar {
 
 .btn1 {
   position: absolute;
-  top : -60px ;
-  right : 0px ;
-  z-index: 10 ;
+  top: -60px;
+  right: 20px;
+  z-index: 10;
 }

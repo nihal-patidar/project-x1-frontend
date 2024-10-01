@@ -7,6 +7,7 @@ import {StepperWithContent} from "../components/serviceComp/AddService"
 import { ServiceContectProvider } from '../context/ServiceContext';
 import { UserContext } from '../context/UserContext';
 import { DataState } from '../context/DataState';
+// import { Sidebar } from '../components/ui/Sidebar';
 
 const Home = () => {
     
@@ -16,6 +17,8 @@ const Home = () => {
               <Navbar/>
             <div className='flex w-full h-full'> 
             <Sidebar/>
+            {/* <Sidebar></Sidebar> */}
+
               <Mainbox/>
             </div>
         </div>

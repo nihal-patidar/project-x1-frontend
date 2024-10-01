@@ -61,27 +61,30 @@ export const testimonials = [
 export const features = [
   {
     icon: <BotMessageSquare />,
-    text: "Drag-and-Drop Interface",
+    text: "Online Ticket Generating",
     description:
-      "Easily design and arrange your VR environments with a user-friendly drag-and-drop interface.",
+      "we generates token that are valid till selected duration. there are various choices - immediate expire just after verification , valid for 1 Day 3 Days and more. After it will expire and ticket not valid after expire. ",
   },
   {
     icon: <Fingerprint />,
-    text: "Multi-Platform Compatibility",
+    text: "Ticket Verification Via SmartPhone",
     description:
-      "Build VR applications that run seamlessly across multiple platforms, including mobile, desktop, and VR headsets.",
+      "We are also providing our Scanner which be open on any device but authenication must be required. service provider can set an validator with new Identity and Password.",
   },
   {
     icon: <ShieldHalf />,
-    text: "Built-in Templates",
+    text: "Multi-Services Management System",
     description:
-      "Jumpstart your VR projects with a variety of built-in templates for different types of applications and environments.",
+      `We have desiged a great user interface where a businessMan or Entrepenour who has single or multiple services where daily check-In are required 
+      can easily handle service details. Here we provided a dashboard where get current updates of No of active services and No of Validator. 
+      For that daily check-in's we designed "Ticket Generating" and "Ticket Verification". `,
   },
   {
     icon: <BatteryCharging />,
-    text: "Real-Time Preview",
+    text: "E-Invitation Card with QR",
     description:
-      "Preview your VR application in real-time as you make changes, allowing for quick iterations and adjustments.",
+      `For special parties and program user can also use our templates and own degisns. we will just intergrate Qr. For each Invitation Card. Then 
+      User can either want to print it or can share via social media platform`,
   },
   {
     icon: <PlugZap />,

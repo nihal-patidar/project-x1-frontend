@@ -7,8 +7,10 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { UserContext } from "../context/UserContext";
 import { useNavigate } from "react-router-dom";
+import { dataContext } from "../context/DataState";
 const Registration= ()=>{
     const {register,handleSubmit}= useForm();
+    const {closePopup} = useState(dataContext);
     var[email,setEmail]= useState(null);
     var[password,setPassword]=useState(null);
     var[confirmPassword,setConfirmPassword]= useState(null);
@@ -51,12 +53,12 @@ const Registration= ()=>{
     }
     return(
         <>
-        <form onSubmit={handleSubmit(onSubmitHandler)} action="" className="flex flex-col items-center justify-center border p-3 rounded-md shadow-md">
+        <form onSubmit={handleSubmit(onSubmitHandler)} action="" className="flex flex-col items-center justify-center border p-3 rounded-md shadow-md gap-3">
             <div className="top text-center">
                 <h2 className="text-2xl font-bold">Registration</h2>
-                <p>If you have account please login <Link to="/login" className=" text-blue-500">Login</Link></p>
+                <p>If you have account please login <Link to="/login" className=" text-blue-500" onClick={()=>{closePopup("registration")}}>Login</Link></p>
             </div>
-            <div className="buttom flex flex-col items-start mt-3">
+            <div className="buttom flex flex-col items-start mt-3 gap-3">
 
             <Input label="Full Name" name="name" placeholder="Full Name"
             {...register("name",{required:true})}
@@ -78,7 +80,7 @@ const Registration= ()=>{
                 type="password"
                 {...register("c_password",{required:true})}></Input>
 
-                <div className="buttons flex items-center justify-between w-full mt-4">
+                <div className="buttons flex items-center justify-between w-full mt-4 gap-3">
                 <Input
                 type="reset"
                 bgcolor="bg-red-500"

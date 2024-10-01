@@ -20,7 +20,7 @@ export function VisitorStepForTicket() {
     const [isFirstStep, setIsFirstStep] = React.useState(false);
     
     const [visitorData, setVisitorData] = useState();
-    const [formId, setFormId] = useState("66af55062686d84fb92b6798");
+    const [formId, setFormId] = useState("66d6eb9c3949092b55c9ab69");
 
     const handleNext = () => !isLastStep && setActiveStep((cur) => cur + 1);
     const handlePrev = () => !isFirstStep && setActiveStep((cur) => cur - 1);
@@ -74,7 +74,7 @@ export function VisitorStepForTicket() {
                     </Step>
                 </Stepper>
             </div>
-            <div className="forms mt-10 w-[300px]">
+            <div className="forms mt-10 w-[600px]">
                 {/* {
                     activeStep == 0 ? <></> : null
                 } */}

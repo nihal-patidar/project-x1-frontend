@@ -53,12 +53,12 @@ const Form = ({ formId, setVisitorData }) => {
 
     return (
         <>
-            <form onSubmit={handleSubmit(submitVisitorFormData)} action="" className="flex w-[300px] bg-gray-300 flex-col items-center justify-center border p-3 rounded-md shadow-md">
+            <form onSubmit={handleSubmit(submitVisitorFormData)} action="" className="flex w-full bg-gray-300 flex-col items-center justify-center border p-3 rounded-md shadow-md">
                 <div className="top text-center w-full bg-blue-700 rounded-md p-3">
                     <h2 className="text-2xl font-bold">{serviceData && serviceData.service_name}</h2>
                     <p className='font-bold text-[#cfcfc0]'><span className='font-semibold '>By :</span> SolutionHeap</p>
                 </div>
-                <div className="buttom flex flex-col items-start mt-3">
+                <div className="buttom flex flex-col items-start mt-3 gap-3 w-full">
 
                     {serviceData &&
                         serviceData.form_structure.map((ele, index) => {
@@ -73,7 +73,7 @@ const Form = ({ formId, setVisitorData }) => {
                         serviceData &&
                         <>
                             <p>1 persion ticket price: {serviceData.ticket_price}</p><br />
-                            <input label="Enter number of persions" className='px-3 py-2 rounded-lg text-black outline-none focus:bg-gray-50 duration-200 border border-gray-200 w-full focus:ring-2 ring-blue-400' type="number" value={persionCount} onChange={(e) => setPersionCount(e.target.value)} min="1" />
+                            <input label="Enter number of persons" className='px-3 py-2 rounded-lg text-black bg-white outline-none focus:bg-gray-50 duration-200 border border-gray-200 w-full focus:ring-2 ring-blue-400' type="number" value={persionCount} onChange={(e) => setPersionCount(e.target.value)} min="1" />
                             <p>Totle Price of {persionCount} persions is: {persionCount * serviceData.ticket_price}</p>
                         </>
                     }
