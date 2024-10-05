@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 import Input from './Input';
 import { Button } from "@material-tailwind/react";
 import { dataContext} from '../context/DataState';
+import api from '../../axiosConfig';
 const Login = () => {
 
     const { register, handleSubmit } = useForm();
@@ -19,7 +20,7 @@ const Login = () => {
     const LonginHandle = async (data) => {
         console.log("i am logining working");
         setShowLoading((prev) => !prev);
-        await axios.post("http://localhost:3000/api/login", {
+        await api.post("/api/login", {
             email: data.email,
             password: data.password
         }).then((response) => {

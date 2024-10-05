@@ -1,52 +1,86 @@
-import React from "react";
-import { BiIdCard } from "react-icons/bi";
-import { Button } from "@material-tailwind/react";
-import { Link } from "react-router-dom";
+import React, { useContext, useState } from 'react';
+// import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTachometerAlt, faUser, faCog, faEnvelope, faSignOutAlt, faSuitcase , faServer} from '@fortawesome/free-solid-svg-icons';
+import { UserContext } from '../context/UserContext';
+
 const Sidebar = () => {
+  const [activeIndex, setActiveIndex] = useState(null);
+  const navigate = useNavigate();
+
+  const logout = ()=> {
+    localStorage.removeItem('userData');
+    navigate('/');
+  }
+
+  const sidebarItems = [
+    { id: 0, name: 'Dashboard', path: '/home', icon: faTachometerAlt },
+    { id: 1, name: 'Services', path: '/home/services', icon: faServer },
+    { id: 2, name: 'Validator', path: '/home/validators', icon: faSuitcase },
+    { id: 3, name: 'Logout', path: '/logout', icon: faSignOutAlt ,click : logout},
+  ];
+
+  const handleItemClick = (id) => {
+    setActiveIndex(id);
+  };
+
   return (
-    <div className="h-screen px-2 py-4 bg-slate-100 w-[240px]">
-      <div className="tabs flex flex-col items-start gap-2 w-full">
-        <h2 className="font-bold text-xl">Features</h2>
+    <div className="flex flex-col h-full w-80  bg-slate-100 text-white p-4">
+      <h2 className="font-bold text-2xl text-[#26bc82] w-full pl-4 py-4 border-b-2 border-green-300">E-Validation</h2>
+      <ul className="flex-grow">
+        {sidebarItems.map((item) => (
+          <li key={item.id} className='py-1' onClick={item.click}>
+            <Link
+              to={item.path}
+              className={`flex items-center py-2 px-4 transition-colors duration-300 rounded-md 
+                ${activeIndex === item.id ? 'bg-teal-500' : 'hover:bg-[#3a3551f4] hover:scale-95'}`}
+              onClick={() => handleItemClick(item.id)}
+              aria-current={activeIndex === item.id ? 'page' : undefined}
+            >
+              <FontAwesomeIcon icon={item.icon} className="mr-2" />
+              {item.name}
+            </Link>
+          </li>
+        ))}
+      </ul>
+      <ProfileCard></ProfileCard>
+    </div>
+  );
+};
 
-        <Link to="/home">
-          <div className="flex items-center h-8 border-b-2 px-4 border-yellow-400 w-[240px] visited:bg-white active:bg-black">
-          <h2 className="">Dashboard</h2>
+const ProfileCard = () => {
+  const {userData} = useContext(UserContext);
+  return (
+    <div className="mt-auto p-4 w-full max-w-xs bg-gradient-to-br from-gray-800 to-gray-700 rounded-lg shadow-2xl text-center transform transition-transform duration-300 ease-in-out">
+      {/* Profile Picture with Glow Effect */}
+      <div className="relative w-20 h-20 mx-auto mb-2 overflow-hidden rounded-full border-4 border-teal-400 shadow-lg hover:shadow-teal-500/50 hover:scale-110 transition-transform duration-300 ease-in-out">
+        <img
+          src={userData?.image}// Replace with your actual image URL
+          alt="Profile"
+          className="w-full h-full object-cover"
+        />
+        {/* Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black to-transparent opacity-60" />
+      </div>
 
-          </div>
-        </Link>
-        <Link to="/home">
-          <Button
-            ripple={true}
-            variant="text"
-            fullWidth={true}
-            className="flex items-center gap-3 text-white"
-          >
-            <BiIdCard /> Dashboard
-          </Button>
-        </Link>
-        <Link to="/home/services">
-          <Button
-            ripple={true}
-            variant="text"
-            fullWidth={true}
-            className="flex items-center gap-3 text-white"
-          >
-            <BiIdCard /> Services
-          </Button>
-        </Link>
-        <Link to="/home/validators">
-          <Button
-            ripple={true}
-            variant="text"
-            fullWidth={true}
-            className="flex items-center gap-3 text-white"
-          >
-            <BiIdCard /> Validators
-          </Button>
+      {/* User Name and ID */}
+      {/* <h3 className="text-lg font-bold text-gray-100">{userData.name}</h3> */}
+      <p className="text-xs text-gray-400 mt-1">{userData?.email}</p>
+
+      {/* View Profile Button with Gradient */}
+      <div className="flex justify-center mt-2">
+      <Link to="/home/profile">
+        <button className="px-4 py-1 text-xs bg-gradient-to-r from-teal-400 to-teal-600 text-white rounded-full shadow-md hover:from-teal-500 hover:to-teal-700 hover:shadow-lg transition-all duration-300 ease-in-out">
+          View Profile
+        </button>
         </Link>
       </div>
     </div>
   );
 };
+
+
 
 export default Sidebar;

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useContext, useState } from "react";
 import {useForm} from "react-hook-form"
 import axios from "axios";
+import api from "../../axiosConfig";
 import { toast } from "react-toastify";
 import { UserContext } from "../context/UserContext";
 import { useNavigate } from "react-router-dom";
@@ -36,7 +37,7 @@ const Registration= ()=>{
             setConfirmPassword(null);
         }
     if(!check){
-       await axios.post("http://localhost:3000/api/register",{
+       await api.post("/api/register",{
             name:data.name,
             email:data.email,
             password:data.password

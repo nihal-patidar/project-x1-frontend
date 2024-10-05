@@ -3,6 +3,7 @@ import Loading from "../components/Loading";
 import { useContext, useState } from "react";
 import { useForm } from "react-hook-form"
 import axios from "axios";
+import api from "../../axiosConfig";
 import { toast } from "react-toastify";
 import { UserContext } from "../context/UserContext";
 import { useNavigate } from "react-router-dom";
@@ -17,7 +18,7 @@ const Login = () => {
 
     const LonginHandle = async (data) => {
         setShowLoading((prev) => !prev);
-        await axios.post("http://localhost:3000/api/login", {
+        await api.post("/api/login", {
             email: data.email,
             password: data.password
         }).then((response) => {

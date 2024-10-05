@@ -2,6 +2,7 @@ import React, { useEffect, useContext, useState } from "react";
 import ServiceTabs from "./ServiceTabs";
 import { ServiceContext } from "../../context/ServiceContext";
 import axios from "axios";
+import api from "../../../axiosConfig";
 import { dataContext } from "../../context/DataState";
 import { UserContext } from "../../context/UserContext";
 import { Input, Radio, Select } from "antd";
@@ -34,8 +35,8 @@ const ServiceCard = () => {
     serviceFormHandler();
   }, []);
   const serviceFormHandler = async () => {
-    await axios
-      .get("http://localhost:3000/service/getServices", {
+    await api
+      .get("/service/getServices", {
         headers: {
           Authorization: `Bearer ${token}`,
         },

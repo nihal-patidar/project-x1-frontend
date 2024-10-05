@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import { UserContext } from '../context/UserContext';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import api from '../../axiosConfig';
 import axios from 'axios';
 const Auth = (props) => {
     let nevigate= useNavigate();
@@ -16,7 +17,7 @@ const Auth = (props) => {
             return;
         }
         setToken(tokenold);
-       axios.get('http://localhost:3000/api/profile',{
+       api.get('/api/profile',{
             headers:{
                 Authorization:`Bearer ${tokenold}`
             }

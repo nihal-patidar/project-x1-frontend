@@ -4,6 +4,8 @@ import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import axios from 'axios';
+import api from "../../axiosConfig";
+
 const Form = ({ formId, setVisitorData }) => {
 
     let { register, handleSubmit, watch } = useForm();
@@ -13,7 +15,7 @@ const Form = ({ formId, setVisitorData }) => {
 
     var [serviceData, setServiceData] = useState(null);
     useEffect(() => {
-        axios.get(`http://localhost:3000/service/getFormData/${formId}`)
+        api.get(`/service/getFormData/${formId}`)
             .then((response) => {
                 console.log(response.data.serviceData);
                 setServiceData(response.data.serviceData)
@@ -22,7 +24,7 @@ const Form = ({ formId, setVisitorData }) => {
                 toast.warning(err.response.data.msg);
             })
 
-        axios.get(`http://localhost:3000/service/getThisService/${formId}`).then((res) => {
+        api.get(`/service/getThisService/${formId}`).then((res) => {
             console.log("validator_list of this service", res.data.validater_list);
             setValidatorList(res.data.validater_list);
             if (!res) {
@@ -37,7 +39,7 @@ const Form = ({ formId, setVisitorData }) => {
 
     const submitVisitorFormData = async (data) => {
         console.log("submitVisitorFormData Called !!! ");
-        await axios.post(`http://localhost:3000/visitor/set-visitor/${formId}`, {
+        await api.post(`/visitor/set-visitor/${formId}`, {
             visitorData: { visitor_data: data, validater_list: validatorList }
         })
             .then((response) => {

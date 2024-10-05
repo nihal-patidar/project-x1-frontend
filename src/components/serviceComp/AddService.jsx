@@ -10,6 +10,7 @@ import ServiceBankForm from "./ServiceBankForm";
 import { useForm } from "react-hook-form";
 import { ServiceContext } from "../../context/ServiceContext";
 import axios from "axios";
+import api from "../../../axiosConfig";
 import { UserContext } from "../../context/UserContext";
 import { toast } from "react-toastify";
 import { dataContext } from "../../context/DataState";
@@ -31,7 +32,7 @@ export function StepperWithContent() {
 
     console.log("heloo hi", data);
     console.log("result to be submitted yyyyyyyyy",register)
-   await axios.put("http://localhost:3000/service/addService",{
+   await api.put("/service/addService",{
     data : data,
     image : serviceImage
    },{

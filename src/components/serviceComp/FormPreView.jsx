@@ -3,6 +3,7 @@ import React, { useContext, useState } from 'react';
 import { CloseCircleOutlined } from '@ant-design/icons';
 import { dataContext } from "../../context/DataState";
 import axios from 'axios';
+import api from "../../../axiosConfig";
 import {Link} from "react-router-dom";
 import {
   Button,

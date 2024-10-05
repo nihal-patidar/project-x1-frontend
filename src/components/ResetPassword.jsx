@@ -6,6 +6,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { UserContext } from "../context/UserContext";
 import { useNavigate } from "react-router-dom";
+import api from "../../axiosConfig";
 const ResetPassword= ()=>{
     const {register,handleSubmit}= useForm();
     var[password,setPassword]=useState(null);
@@ -32,7 +33,7 @@ const ResetPassword= ()=>{
             setConfirmPassword(null);
         }
     if(!check){
-       await axios.post("http://localhost:3000/api/reset-password",{
+       await api.post("/api/reset-password",{
             password:data.password,
             c_password:data.c_password
         }).then((response)=>{

@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useState } from "react";
 import Validator_Strip from "./Validator_Strip";
 import { dataContext } from "../../context/DataState";
 import axios from "axios";
+import api from "../../../axiosConfig";
+
 
 
 const ValidatorInService = (props) => {
@@ -14,7 +16,7 @@ const ValidatorInService = (props) => {
     },[])
 
     const getValidator= () => {
-        axios.get(`http://localhost:3000/validator/getValidators/${props.service_id}`).then((response)=>{
+        api.get(`/validator/getValidators/${props.service_id}`).then((response)=>{
             let data = response.data.validators ;
             setValidator(data)
             Object.values(data).forEach((value)=>{

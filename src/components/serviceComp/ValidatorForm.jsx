@@ -1,6 +1,8 @@
 import React, { useState, useContext } from "react";
 import { PlusOutlined } from "@ant-design/icons";
 import axios from "axios";
+import api from "../../../axiosConfig";
+
 import { dataContext } from "../../context/DataState";
 import { toast } from "react-toastify";
 
@@ -56,9 +58,9 @@ const ValidatorForm = () => {
 
   const AddValidator = async (service_id) => {
     console.log("heloo hi", validatorData);
-    await axios
+    await api
       .put(
-        `http://localhost:3000/validator/addValidator/${service_id}`,
+        `/validator/addValidator/${service_id}`,
         {
           validatorData: validatorData,
           image: validatorImage,

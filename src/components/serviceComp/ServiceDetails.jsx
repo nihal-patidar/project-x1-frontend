@@ -22,7 +22,7 @@ const ServiceDetails = ({ register, setServiceImage }) => {
     }
 
   return (
-    <div>
+    <div className="flex flex-col gap-3">
       <div className="flex w-full justify-center items-center">
         <Input
           label="Service Image"
@@ -47,7 +47,7 @@ const ServiceDetails = ({ register, setServiceImage }) => {
           {...register("service_address", { required: true })}
         ></Input>
       </div>
-      <div className="flex gap-2">
+      <div className="flex gap-2 bg-white">
         <Input
           label="Ticket Price"
           type="number"
@@ -69,7 +69,7 @@ const ServiceDetails = ({ register, setServiceImage }) => {
         <textarea
           placeholder="Service Discription"
           {...register("service_discription", { required: true })}
-          className={`px-3 py-2 rounded-lg text-black outline-none focus:bg-gray-50 duration-200 border border-gray-200 w-full focus:ring-2 ring-blue-400 dis h-[10rem]`}
+          className={`px-3 py-2 rounded-lg text-black bg-white outline-none focus:bg-gray-50 duration-200 border border-gray-200 w-full focus:ring-2 ring-blue-400 dis h-[10rem]`}
         />
       </div>
     </div>

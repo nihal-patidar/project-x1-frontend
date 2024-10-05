@@ -10,6 +10,8 @@ import ServiceBankForm from "./ServiceBankForm";
 import { useForm } from "react-hook-form";
 import { ServiceContext } from "../../context/ServiceContext";
 import axios from "axios";
+import api from "../../../axiosConfig";
+
 import { UserContext } from "../../context/UserContext";
 import { toast } from "react-toastify";
 import { dataContext } from "../../context/DataState";
@@ -38,7 +40,7 @@ export function UpdateForm({ initialValues, currentServiceFormId }) {
   const handleDelete = async() => {
     console.log("current service id",currentServiceFormId);
 
-    await axios.post(`http://localhost:3000/service/deleteService/${currentServiceFormId}`,{
+    await api.post(`/service/deleteService/${currentServiceFormId}`,{
         headers : {
             Authorization : `Bearer ${token}`
         }
@@ -52,9 +54,9 @@ export function UpdateForm({ initialValues, currentServiceFormId }) {
   }
 
   const serviceFormHandler = async (data) => {
-    await axios
+    await api
       .put(
-        `http://localhost:3000/service/updateService/${currentServiceFormId}`,
+        `/service/updateService/${currentServiceFormId}`,
         data,
         {
           headers: {

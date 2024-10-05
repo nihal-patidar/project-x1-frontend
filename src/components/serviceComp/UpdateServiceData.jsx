@@ -10,6 +10,8 @@ import ServiceBankForm from "./ServiceBankForm";
 import { useForm } from "react-hook-form";
 import { ServiceContext } from "../../context/ServiceContext";
 import axios from "axios";
+import api from "../../../axiosConfig";
+
 import { UserContext } from "../../context/UserContext";
 import { toast } from "react-toastify";
 import { dataContext } from "../../context/DataState";
@@ -30,9 +32,9 @@ export function UpdateServiceForm() {
 
   useEffect( () => {
     if (currentServiceFormId) {
-      axios
+      api
       .get(
-        `http://localhost:3000/service/getThisService/${currentServiceFormId}`
+        `/service/getThisService/${currentServiceFormId}`
       )
       .then((response) => {
         console.log("form data is here :----", response.data.service_data)

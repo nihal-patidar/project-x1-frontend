@@ -103,7 +103,7 @@ body::-webkit-scrollbar {
 .workspace {
   background-color: var(--bg-workspace);
   height: 89vh;
-  width: 90%;
+  width: 100%;
   margin: 0px;
   position: relative;
   padding: 0px;

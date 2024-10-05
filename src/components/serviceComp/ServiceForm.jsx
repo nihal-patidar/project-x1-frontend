@@ -14,6 +14,9 @@ import {
   TreeSelect,
 } from 'antd';
 import axios from 'axios';
+// import api from "../../axiosConfig";
+import api from '../../../axiosConfig';
+
 import { toast } from 'react-toastify';
 import { ServiceContext } from '../../context/ServiceContext';
 const ServiceForm = ({formId}) => {
@@ -37,7 +40,7 @@ const ServiceForm = ({formId}) => {
 
   const createFormForVisitor= async()=>{
     console.log(formId);
-    await axios.post(`http://localhost:3000/service/addForm/${formId}`,{
+    await api.post(`/service/addForm/${formId}`,{
         formData:fields
     })
      .then((response)=>{

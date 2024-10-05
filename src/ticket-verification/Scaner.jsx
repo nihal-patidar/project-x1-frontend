@@ -3,6 +3,8 @@ import QrReader from 'react-qr-scanner';
 import { toast } from 'react-toastify';
 import verifyGIF from "/animations/icons8-verify.gif";
 import axios from 'axios';
+import api from "../../axiosConfig";
+
 const Scaner = () => {
   const [delay, setDelay] = useState(100);
   const [result, setResult] = useState("66ac860505f91b63dff8e70c");
@@ -15,7 +17,7 @@ const Scaner = () => {
         // setResult(data.text || JSON.stringify(data));
         if(result){
           setQRReadDone(true);
-          axios.get(`http://localhost:3000/ticket-verification/${result}`,{
+          api.get(`/ticket-verification/${result}`,{
             headers: {
               validatorId : "66a8fcbde1e41e925dd0ffba"
             },

@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form"
 import axios from "axios";
 import { toast } from "react-toastify";
 import { UserContext } from "../context/UserContext";
-
+import api from "../../axiosConfig";
 const Profile = () => {
     const { register, handleSubmit } = useForm();
     var { setShowLoading, userData, image, setImage, setUserData, sendImage, setSendImage } = useContext(UserContext);
@@ -21,7 +21,7 @@ const Profile = () => {
         setShowLoading((prev) => !prev);
         let token = localStorage.getItem("userData");
         console.log(token);
-        await axios.post("http://localhost:3000/api/update-profile", {
+        await api.post("/api/update-profile", {
             name: username,
             email: email,
             image: sendImage,
