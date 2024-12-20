@@ -74,7 +74,7 @@ const router= createBrowserRouter([
     element:<FormPage/>
   },
   {
-    path:"/ticket-generation",
+    path:"/ticket-generation/:formId",
     element: <VisitorStepForTicket/>
   },
 ])

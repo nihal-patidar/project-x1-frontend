@@ -44,7 +44,7 @@ const Registration= ()=>{
         }).then((response)=>{
             console.log("data",response.data);
             setUserData(response.data);
-            navigate("/email-verification");
+            navigate("/login");
         }).catch((error)=>{
             setShowLoading(false);
             console.log("error data",error.response.data);

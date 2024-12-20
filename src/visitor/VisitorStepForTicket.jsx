@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Stepper, Step, Button, Typography } from "@material-tailwind/react";
 import {
     CogIcon,
@@ -20,7 +20,12 @@ export function VisitorStepForTicket() {
     const [isFirstStep, setIsFirstStep] = React.useState(false);
     
     const [visitorData, setVisitorData] = useState();
-    const [formId, setFormId] = useState("66d6eb9c3949092b55c9ab69");
+    // const [formId, setFormId] = useState();
+    const {formId} = useParams();
+
+    // useEffect(()=>{
+    //     setFormId(()=> {const  {formId} = useParams(); return formId});
+    // },[])
 
     const handleNext = () => !isLastStep && setActiveStep((cur) => cur + 1);
     const handlePrev = () => !isFirstStep && setActiveStep((cur) => cur - 1);
@@ -88,14 +93,7 @@ export function VisitorStepForTicket() {
                     activeStep == 2 ? <TicketPage data={{visitorData,formId}} /> : null
                 }
             </div>
-            {/* <div className="flex justify-between w-[300px]">
-                <Button onClick={handlePrev} disabled={isFirstStep}>
-                    Prev
-                </Button>
-                <Button onClick={handleNext} disabled={isLastStep}>
-                    Next
-                </Button>
-            </div> */}
+            
         </div>
 
     );

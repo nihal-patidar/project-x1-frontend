@@ -10,8 +10,10 @@ import {
 } from 'antd';
 import { ServiceContext } from '../../context/ServiceContext';
 
-const FormPreView = ({formUrl , service_id}) => {
+const FormPreView = ({ service_id}) => {
     const {setIsOpen,setFieldsDatatype} = useContext(dataContext)
+    const baseURL = window.location.origin;
+    const formUrl = baseURL + `/ticket-generation/${service_id}`
     // const { fields, setFieldsDatatype, Heloo,isOpen } = useContext(dataContext);
     const {currentServiceId , setCurrentServiceId} = useContext(ServiceContext)
 

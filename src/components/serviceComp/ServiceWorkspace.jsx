@@ -20,9 +20,9 @@ const ServiceWorkSpace = () => {
     setAllValidator,
     closePopup,
   } = useContext(dataContext);
-  let { openTab, setOpenTab } = useContext(UserContext);
-  const [fieldName, setField] = useState("");
-  const [fieldType, setFieldtype] = useState("");
+  // let { openTab, setOpenTab } = useContext(UserContext);
+  // const [fieldName, setField] = useState("");
+  // const [fieldType, setFieldtype] = useState("");
 
   const keywords = [
     {

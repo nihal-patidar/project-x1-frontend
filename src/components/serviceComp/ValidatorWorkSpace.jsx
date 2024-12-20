@@ -27,14 +27,14 @@ const ValidatorWorkSpace = () => {
                 
                 <div className="center w-[98%] h-full m-3 overflow-y-auto workspace-contents list-of-validators">
                     {
-                        allValidators.map((validator, index) => {
+                        allValidators.length ? allValidators.map((validator, index) => {
                             return (
                                 <Validator key={index} validator={{ ...validator }} />
                             )
-                        })
+                        }) : <><h1 className="ml-80 pl-10 mt-64 text-6xl">No Validator Added</h1></>
                     }
                 </div>
-
+                
             </div>
 
             {/*------- Form value ---------- */}
@@ -42,7 +42,7 @@ const ValidatorWorkSpace = () => {
             {isOpen.addValidatorForm ? (<>
 
                 <div className="popup-window bg-white h-[80%] w-[1200px] overflow-y-auto border-2 border-gray-500 absolute top-20 left-44 box-border px-7 list-box">
-                    <div className='service-form-builder py-4 flex flex-col items-center w-full mt-6   ' >
+                    <div className='service-form-builder py-4 flex flex-col items-center w-full mt-12' >
                         <div className="flex justify-between w-full">
                             <h2 className="text-[#872323] 
                                 text-xl font-extrabold shadow-lg mb-6 text-center w-[400px]">
@@ -50,10 +50,9 @@ const ValidatorWorkSpace = () => {
                             </h2>
                             <button className="relative -top-10 font-bold" style={{ color: "black", fontWeight: "bolder", border: "none" }} onClick={() => closePopup("addValidatorForm")}>Close</button>
                         </div>
-                        <div className="flex justify-center w-full items-center ">
+                        <div className="flex justify-center w-full items-center pt-56">
                             <ValidatorForm />
                         </div>
-
                     </div>
                 </div>
             </>

@@ -184,7 +184,7 @@ const ServiceCard = () => {
 
   return (
     <div className="flex flex-col gap-2 w-full h-full bg-white shadow-inner rounded-lg overflow-y-auto justify-start items-center my-2 border list-box">
-      {services &&
+      {services.length !== 0 ?
         services.map((ele, index) => {
           console.log("service no.", index, " -> ", ele);
           return (
@@ -240,7 +240,7 @@ const ServiceCard = () => {
               )}
             </div>
           );
-        })}
+        }) : <><h1 className="mt-64 text-6xl">No Services Added</h1></>}
     </div>
   );
 };

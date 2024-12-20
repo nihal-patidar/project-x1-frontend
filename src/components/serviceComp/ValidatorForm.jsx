@@ -68,7 +68,7 @@ const ValidatorForm = () => {
         {
           headers: {
             Authorization: `Bearer ${token}`,
-            'Content-Type': 'multipart/form-data',
+            "Content-Type": "multipart/form-data",
           },
         }
       )
@@ -87,7 +87,7 @@ const ValidatorForm = () => {
   const previewImage = (e) => {
     let value = e.target.files[0];
     setValidatorImage(value);
-}
+  };
 
   return (
     <>
@@ -109,29 +109,11 @@ const ValidatorForm = () => {
           valuePropName="fileList"
           getValueFromEvent={normFile}
         >
-          {/* <Upload action="" listType="picture-card">
-            <button
-              style={{
-                border: 0,
-                background: 'none',
-              }}
-              type="button"
-            >
-              <PlusOutlined />
-              <div
-                style={{
-                  marginTop: 8,
-                }}
-              >
-                Upload
-              </div>
-            </button>
-          </Upload> */}
           <Input
             name="image"
             type="file"
-            // preview={previewImage}
-            onChange={(e)=>{
+            preview={previewImage}
+            onChange={(e) => {
               setValidatorImage(e.target.files[0]);
             }}
           ></Input>
@@ -259,4 +241,4 @@ const ValidatorForm = () => {
   );
 };
 
-export default ValidatorForm;
+export default ValidatorForm ;
