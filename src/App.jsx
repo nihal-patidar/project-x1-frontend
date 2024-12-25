@@ -6,21 +6,16 @@ import Home from './pages/Home';
 import EmailVerificationPage from './pages/EmailVerificationPage';
 import LoginPage from './pages/LoginPage';
 import Auth from './pages/Auth';
-import { useContext, useEffect } from 'react';
-import { UserContext } from './context/UserContext';
-import axios from 'axios';
 import ResetPasswordPage from './pages/ResetPasswordPage';
 import ForgetPassword from './components/ForgetPassword';
 import Profile from './components/Profile';
-import ServicesPage from './pages/ServicesPage';
 import ServiceWorkSpace from './components/serviceComp/ServiceWorkspace';
 import FormPage from './pages/FormPage';
-import ValidatorCard from './components/serviceComp/ValidatorCard';
-import TicketPage from './pages/TicketPage';
 import ValidatorWorkSpace from './components/serviceComp/ValidatorWorkSpace';
 import VisitorStepForTicket from './visitor/VisitorStepForTicket';
 import Dashboard from './components/Dashboard';
 import Landing from "./components/src/App.jsx";
+import FocusInput from './FocusInput.jsx';
 const router= createBrowserRouter([
   {
     path:"/",
@@ -39,20 +34,19 @@ const router= createBrowserRouter([
     element:<Auth><Home/></Auth>,
     children:[
       {
-        path:"/home/profile",
-        element:<Auth><Profile/></Auth>
+        path:"profile",
+        element:<Profile/>
       },
       {
-        path:"/home/services",
-        element:<Auth><ServiceWorkSpace/></Auth>
+        path:"services",
+        element:<ServiceWorkSpace/>
       },
       {
-        path:"/home/validators",
-// <<<<<<< HEAD
-        element:<Auth><ValidatorWorkSpace></ValidatorWorkSpace></Auth>
+        path:"validators",
+        element:<ValidatorWorkSpace></ValidatorWorkSpace>
       },
       {
-        path:"/home",
+        path:"",
         element:<Dashboard/>
       }
     ]
@@ -77,6 +71,10 @@ const router= createBrowserRouter([
     path:"/ticket-generation/:formId",
     element: <VisitorStepForTicket/>
   },
+  {
+    path:"/try",
+    element: <FocusInput></FocusInput>
+  }
 ])
 function App() {
 

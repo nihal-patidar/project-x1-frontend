@@ -70,7 +70,7 @@ const Profile = () => {
                 <div className="top text-center">
                     <h2 className="text-3xl font-bold mb-4">Profile</h2>
                     {!editable ?
-                        <img src={userData.image} alt="Profile" className="w-[80px] h-[80px] rounded-full object-cover mb-4 border-2 border-gray-500" />
+                        <img src={userData.image} alt="Profile" loading='eager' className="w-[80px] h-[80px] rounded-full object-cover mb-4 border-2 border-gray-500" />
                         :
                         <img src={image} alt="Profile Preview" className="w-[80px] h-[80px] rounded-full object-cover mb-4 border-2 border-gray-500" />
                     }

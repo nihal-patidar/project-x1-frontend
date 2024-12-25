@@ -1,21 +1,20 @@
-import React, { useState, useContext, useEffect, useCallback } from "react";
+import React, { useState, useContext, useEffect, useCallback, Suspense } from "react";
 import "../../index.css";
 // import {  Input, Radio, Select } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 import { dataContext } from "../../context/DataState";
 import { Button } from "@material-tailwind/react";
-import Services from "./ServiceCard";
+// import Services from "./ServiceCard";
+const Services = React.lazy(()=>import('./ServiceCard'));
 import { BiExit } from "react-icons/bi";
 import ServiceForm from "./ServiceForm";
-import { UserContext } from "../../context/UserContext";
+// import { UserContext } from "../../context/UserContext";
 import { StepperWithContent } from "./AddService";
 import { UpdateServiceForm } from "./UpdateServiceData";
 const ServiceWorkSpace = () => {
   const {
-    fields,
     setFieldsDatatype,
     isOpen,
-    setIsOpen,
     openPopup,
     setAllValidator,
     closePopup,
@@ -59,7 +58,9 @@ const ServiceWorkSpace = () => {
           </Button>
         </div>
         <div className="flex flex-col p-0 m-0 w-full h-full">
-          <Services></Services>
+          <Suspense fallback={()=><p>This is Loading...</p>}>
+            <Services></Services>
+          </Suspense>
         </div>
       </div>
 

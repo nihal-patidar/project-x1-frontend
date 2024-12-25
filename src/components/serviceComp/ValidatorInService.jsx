@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { memo, useContext, useEffect, useState } from "react";
 import Validator_Strip from "./Validator_Strip";
 import { dataContext } from "../../context/DataState";
 import axios from "axios";
@@ -47,4 +47,4 @@ const ValidatorInService = (props) => {
     )
 }
 
-export default ValidatorInService ;
+export default memo(ValidatorInService) ;

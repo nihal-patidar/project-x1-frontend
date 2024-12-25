@@ -1,4 +1,5 @@
-import React, { useEffect, useContext, useState } from "react";
+import React, { useEffect, useContext, useState, Suspense } from "react";
+import { memo } from "react";
 import ServiceTabs from "./ServiceTabs";
 import { ServiceContext } from "../../context/ServiceContext";
 import axios from "axios";
@@ -14,9 +15,9 @@ import { toast } from "react-toastify";
 import welvideo from "../../../public/vedios/to-our-Service.mp4"
 import "../../index.css";
 
-const ServiceCard = () => {
+const Services = () => {
   const { isOpen , closePopup } = useContext(dataContext);
-  const { currentServiceId, setCurrentServiceId } = useContext(ServiceContext);
+  const { currentServiceId } = useContext(ServiceContext);
 
   const keywords = [
     {
@@ -34,6 +35,11 @@ const ServiceCard = () => {
   useEffect(() => {
     serviceFormHandler();
   }, []);
+
+
+  useEffect(()=>{
+    console.log("Service Component Called!!");
+  },[])
   const serviceFormHandler = async () => {
     await api
       .get("/service/getServices", {
@@ -42,7 +48,8 @@ const ServiceCard = () => {
         },
       })
       .then((response) => {
-        console.log("services Data -- ", response.data.services);
+        // console.log("services Data -- ", response.data.services);
+        console.log("services fetched request");
         setServices(response.data.services);
         // console.log(response.data.services);
       })
@@ -198,6 +205,7 @@ const ServiceCard = () => {
                     className="h-32 w-32 object-cover bg-slate-200"
                     src={ele.service_image_url}
                     alt="Profile Photo"
+                    loading="lazy"
                   />
                   <h2 className="text-xl font-bold mb-2">{ele.service_name}</h2>
                 </div>
@@ -245,4 +253,4 @@ const ServiceCard = () => {
   );
 };
 
-export default ServiceCard;
+export default memo(Services);

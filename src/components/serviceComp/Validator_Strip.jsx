@@ -12,7 +12,7 @@ const Validator_Strip = (props) => {
       } = props.validator;
     return (
         <div className="flex justify-between p-2 items-center w-full bg-emerald-300 rounded-md my-1 border-2 border-gray-400">
-            <img class="h-8 w-8 object-cover rounded-full bg-slate-200" src={validator_image_url} alt="Profile Photo" />
+            <img class="h-8 w-8 object-cover rounded-full bg-slate-200" src={validator_image_url} alt="Profile Photo" loading='lazy'/>
             <h4 class="text-sm font-bold mb-2 text-gray-700">{gender}</h4>
             <h4 class="text-sm font-bold mb-2 text-gray-700">{validator_name}</h4>
 
