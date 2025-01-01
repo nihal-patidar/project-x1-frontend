@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 import axios from 'axios';
 import api from "../../axiosConfig";
 
-const Form = ({ formId, setVisitorData }) => {
+const Form = ({ formId, setVisitorData , setActiveStep }) => {
 
     let { register, handleSubmit, watch } = useForm();
     console.log("FormId:", formId);
@@ -45,7 +45,7 @@ const Form = ({ formId, setVisitorData }) => {
             .then((response) => {
                 console.log("visitors data : ", response.data);
                 setVisitorData({...response.data.visitorData,qrData:response.data.qrData});
-
+                setActiveStep(1);
                 toast.success("Visitor Data Succefully Added !!!");
             }).catch((err) => {
                 console.log(err);

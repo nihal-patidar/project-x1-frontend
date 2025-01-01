@@ -26,9 +26,20 @@ const Login = () => {
         }).then((response) => {
             console.log("data", response.data);
             setUserData(response.data);
-            localStorage.setItem("userData", response.data.token);
             navigate("/home");
-            toast.success("Login Succefully!");
+            localStorage.setItem("userData", response.data.token);
+            api.get('/api/profile',{
+                headers:{
+                    Authorization:`Bearer ${response.data.token}`
+                }
+            }).then((response)=>{
+                setUserData(response.data.userData);
+                console.log("userdata: ",response.data.userData);
+                toast.success("User Data Fetched");
+            }).catch((err)=>{
+                nevigate('/login');
+            })
+            toast.success("Login Successfully!");
         }).catch((error) => {
             setShowLoading((prev) => !prev);
             console.log("error data", error.response.data);

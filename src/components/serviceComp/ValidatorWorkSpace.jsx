@@ -5,12 +5,14 @@ import { PlusOutlined } from '@ant-design/icons';
 import ValidatorForm from "./ValidatorForm";
 import { dataContext } from '../../context/DataState';
 import "../../index.css"
+import { useNavigate } from "react-router-dom";
 
 
 
 const ValidatorWorkSpace = () => {
     const { allValidators, openPopup, closePopup, isOpen } = useContext(dataContext)
     console.log("List of Validator", allValidators);
+    const navigate = useNavigate();
 
     return (<>
         <div className="flex flex-col workspace">
@@ -18,7 +20,10 @@ const ValidatorWorkSpace = () => {
           <Button
             color="blue"
             size="md"
-            onClick={() => openPopup("addValidatorForm")}
+            // onClick={() => openPopup("addValidatorForm")}
+            onClick={()=>{
+                navigate('/home/create-validator-form');
+            }}
           >
             <PlusOutlined /> Add Validator
           </Button>

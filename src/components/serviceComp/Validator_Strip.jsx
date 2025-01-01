@@ -1,33 +1,48 @@
 import React from "react";
-import { UserOutlined } from '@ant-design/icons';
+import { UserOutlined } from "@ant-design/icons";
 import { Button } from "antd";
-import { Link } from "react-router-dom";
-
+import { Link, useNavigate } from "react-router-dom";
 
 const Validator_Strip = (props) => {
-    const {
-        validator_name, validator_email,
-        mobile_number, validator_address,
-        aadhar_number, gender, position, salary, time_shift,service_i, work_time, validator_image_url
-      } = props.validator;
-    return (
-        <div className="flex justify-between p-2 items-center w-full bg-emerald-300 rounded-md my-1 border-2 border-gray-400">
-            <img class="h-8 w-8 object-cover rounded-full bg-slate-200" src={validator_image_url} alt="Profile Photo" loading='lazy'/>
-            <h4 class="text-sm font-bold mb-2 text-gray-700">{gender}</h4>
-            <h4 class="text-sm font-bold mb-2 text-gray-700">{validator_name}</h4>
+  const {
+    validator_name,
+    mobile_number,
+    gender,
+    time_shift,
+    service_id,
+    validator_image_url,
+  } = props.validator;
+  const navigate = useNavigate();
 
-            <h4 class="text-sm font-bold mb-2 text-gray-700">{mobile_number}</h4>
-            <h4 class="text-sm font-bold mb-2 text-gray-700">{time_shift}</h4>
+  return (
+    <div className="flex justify-between p-2 items-center w-full my-1 rounded-lg bg-gradient-to-r from-red-400 to-pink-500 text-white font-semibold shadow-md cursor-pointer hover:opacity-90">
+      <img
+        class="h-8 w-8 object-cover rounded-full bg-slate-200"
+        src={validator_image_url}
+        alt="Profile Photo"
+        loading="lazy"
+      />
+      <h4 class="text-sm font-bold mb-2">{gender}</h4>
+      <h4 class="text-sm font-bold mb-2">{validator_name}</h4>
 
-            <Link to="/user" >
-                <Button
-                    type="primary" size="small" icon={<UserOutlined />} style={{
-                        backgroundColor: "blue"
-                    }}>
-                    Visitors</Button>
-            </Link>
-        </div>
-    )
-}
+      <h4 class="text-sm font-bold mb-2">{mobile_number}</h4>
+      <h4 class="text-sm font-bold mb-2">{time_shift}</h4>
+
+      <Button
+        type="primary"
+        size="small"
+        icon={<UserOutlined />}
+        style={{
+          backgroundColor: "blue",
+        }}
+        onClick={() => {
+          navigate("/home/visitors", { state: { id: service_id } });
+        }}
+      >
+        Visitors
+      </Button>
+    </div>
+  );
+};
 
 export default Validator_Strip;

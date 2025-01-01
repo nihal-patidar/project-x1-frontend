@@ -9,8 +9,9 @@ const Services = React.lazy(()=>import('./ServiceCard'));
 import { BiExit } from "react-icons/bi";
 import ServiceForm from "./ServiceForm";
 // import { UserContext } from "../../context/UserContext";
-import { StepperWithContent } from "./AddService";
+import { StepperWithContent } from "./AddEvent";
 import { UpdateServiceForm } from "./UpdateServiceData";
+import { useNavigate } from "react-router-dom";
 const ServiceWorkSpace = () => {
   const {
     setFieldsDatatype,
@@ -22,6 +23,7 @@ const ServiceWorkSpace = () => {
   // let { openTab, setOpenTab } = useContext(UserContext);
   // const [fieldName, setField] = useState("");
   // const [fieldType, setFieldtype] = useState("");
+  const navigate = useNavigate();
 
   const keywords = [
     {
@@ -52,7 +54,7 @@ const ServiceWorkSpace = () => {
           <Button
             color="blue"
             size="md"
-            onClick={() => openPopup("addServiceForm")}
+            onClick={()=>{navigate('/home/create-service')}}
           >
             <PlusOutlined /> Add Services
           </Button>
@@ -64,7 +66,7 @@ const ServiceWorkSpace = () => {
         </div>
       </div>
 
-      {isOpen.formPreView ? (
+      {/* {isOpen.formPreView ? (
         <>
           <div className="popup-window-2 flex flex-col justify-center w-[700px] items-center">
             <button
@@ -84,7 +86,7 @@ const ServiceWorkSpace = () => {
         </>
       ) : (
         <></>
-      )}
+      )} */}
       {isOpen.qrPreView ? (
         <>
           <div className="popup-window-2 flex flex-col justify-center items-center w-[700px] h-[350px]">

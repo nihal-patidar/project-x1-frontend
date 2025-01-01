@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
-import Ticket from './Ticket';
+// import Ticket from './Ticket';
+import InvitationCard from './Ticket';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { useParams } from 'react-router-dom';
@@ -18,7 +19,8 @@ const TicketPage = ({data}) => {
     },[])
     return (
         <div>
-            <Ticket data={data}/>
+            {/* <Ticket data={data}/> */}
+            <InvitationCard data={data}/>
         </div>
     );
 }

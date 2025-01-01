@@ -16,6 +16,12 @@ import VisitorStepForTicket from './visitor/VisitorStepForTicket';
 import Dashboard from './components/Dashboard';
 import Landing from "./components/src/App.jsx";
 import FocusInput from './FocusInput.jsx';
+import ServiceVisitors from './components/serviceComp/ServiceVisitors.jsx';
+import ValidatorForm from './components/serviceComp/ValidatorForm.jsx';
+import { StepperWithContent } from './components/serviceComp/AddEvent.jsx';
+import ServiceForm from './components/serviceComp/ServiceForm.jsx';
+import VisitorFormCreate from './components/serviceComp/ServiceForm.jsx';
+import { UpdateServiceForm } from './components/serviceComp/UpdateServiceData.jsx';
 const router= createBrowserRouter([
   {
     path:"/",
@@ -48,6 +54,26 @@ const router= createBrowserRouter([
       {
         path:"",
         element:<Dashboard/>
+      },
+      {
+        path:"visitors",
+        element:<ServiceVisitors></ServiceVisitors>
+      },
+      {
+        path : "create-validator-form",
+        element : <ValidatorForm />
+      },
+      {
+        path : "create-service",
+        element : <StepperWithContent />
+      },
+      {
+        path : "create-visitor-form",
+        element : <VisitorFormCreate />
+      },
+      {
+        path : "update-service-data",
+        element : <UpdateServiceForm />
       }
     ]
   },

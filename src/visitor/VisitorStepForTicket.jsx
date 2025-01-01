@@ -10,7 +10,7 @@ import { useParams } from "react-router-dom";
 
 
 // import { ServiceContext } from "../../context/ServiceContext"; 
-import Payment from "./Payment"
+// import Payment from "./Payment"
 import Form from "./Form";
 import TicketPage from "./TicketPage";
 
@@ -37,7 +37,7 @@ export function VisitorStepForTicket() {
     return (
 
         <div className="w-full flex flex-col items-center gap-4 mt-3 mb-12">
-            <div className="steps w-[300px]">
+            {/* <div className="steps w-[300px]">
                 <Stepper
                     activeStep={activeStep}
                     isLastStep={(value) => setIsLastStep(value)}
@@ -59,17 +59,6 @@ export function VisitorStepForTicket() {
                         <BuildingLibraryIcon className="h-5 w-5" />
                         <div className="absolute -bottom-[1.5rem] w-max text-center">
                             <Typography
-                                color={activeStep === 1 ? "blue-gray" : "gray"}
-                                className="font-normal"
-                            >
-                                Payment
-                            </Typography>
-                        </div>
-                    </Step>
-                    <Step onClick={() => setActiveStep(2)}>
-                        <BuildingLibraryIcon className="h-5 w-5" />
-                        <div className="absolute -bottom-[1.5rem] w-max text-center">
-                            <Typography
                                 color={activeStep === 2 ? "blue-gray" : "gray"}
                                 className="font-normal"
                             >
@@ -78,19 +67,19 @@ export function VisitorStepForTicket() {
                         </div>
                     </Step>
                 </Stepper>
-            </div>
-            <div className="forms mt-10 w-[600px]">
+            </div> */}
+            <div className="forms mt-10 w-[400px]">
                 {/* {
                     activeStep == 0 ? <></> : null
                 } */}
                 {
-                    activeStep == 0 ? <Form setVisitorData={setVisitorData} formId={formId} /> : null
+                    activeStep == 0 ? <Form setVisitorData={setVisitorData} setActiveStep={setActiveStep} formId={formId} /> : null
                 }
-                {
+                {/* {
                     activeStep == 1 ? <Payment></Payment> : null
-                }
+                } */}
                 {
-                    activeStep == 2 ? <TicketPage data={{visitorData,formId}} /> : null
+                    activeStep == 1 ? <TicketPage data={{visitorData,formId}} /> : null
                 }
             </div>
             

@@ -3,12 +3,14 @@ import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTachometerAlt, faUser, faCog, faEnvelope, faSignOutAlt, faSuitcase , faServer} from '@fortawesome/free-solid-svg-icons';
+import { faTachometerAlt, faUser, faCog, faEnvelope, faSignOutAlt, faSuitcase , faServer ,} from '@fortawesome/free-solid-svg-icons';
 import { UserContext } from '../context/UserContext';
 
 const Sidebar = () => {
   const [activeIndex, setActiveIndex] = useState(null);
   const navigate = useNavigate();
+  const {userData} = useContext(UserContext);
+
 
   const logout = ()=> {
     localStorage.removeItem('userData');
@@ -19,7 +21,7 @@ const Sidebar = () => {
     { id: 0, name: 'Dashboard', path: '/home', icon: faTachometerAlt },
     { id: 1, name: 'Services', path: '/home/services', icon: faServer },
     { id: 2, name: 'Validator', path: '/home/validators', icon: faSuitcase },
-    { id: 3, name: 'Logout', path: '/logout', icon: faSignOutAlt ,click : logout},
+    { id: 3, name: 'Logout', path: '/', icon: faSignOutAlt ,click : logout},
   ];
 
   const handleItemClick = (id) => {
@@ -45,7 +47,8 @@ const Sidebar = () => {
           </li>
         ))}
       </ul>
-      <ProfileCard></ProfileCard>
+       <ProfileCard></ProfileCard>
+      
     </div>
   );
 };
@@ -53,7 +56,7 @@ const Sidebar = () => {
 const ProfileCard = () => {
   const {userData} = useContext(UserContext);
   return (
-    <div className="mt-auto p-4 w-full max-w-xs bg-gradient-to-br from-gray-800 to-gray-700 rounded-lg shadow-2xl text-center transform transition-transform duration-300 ease-in-out">
+    <div className="mt-auto p-4 w-full max-w-xs bg-gradient-to-br from-[#949392] to-[#6a686a] rounded-lg shadow-2xl text-center transform transition-transform duration-300 ease-in-out">
       {/* Profile Picture with Glow Effect */}
       <div className="relative w-20 h-20 mx-auto mb-2 overflow-hidden rounded-full border-4 border-teal-400 shadow-lg hover:shadow-teal-500/50 hover:scale-110 transition-transform duration-300 ease-in-out">
         <img
@@ -67,7 +70,7 @@ const ProfileCard = () => {
 
       {/* User Name and ID */}
       {/* <h3 className="text-lg font-bold text-gray-100">{userData.name}</h3> */}
-      <p className="text-xs text-gray-400 mt-1">{userData?.email}</p>
+      <p className="text-xs text-gray-400 mt-1 font-semibold">{userData?.email}</p>
 
       {/* View Profile Button with Gradient */}
       <div className="flex justify-center mt-2">

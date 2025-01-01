@@ -47,7 +47,7 @@ const ServiceDetails = ({ register, setServiceImage }) => {
           {...register("service_address", { required: true })}
         ></Input>
       </div>
-      <div className="flex gap-2 bg-white">
+      <div className="flex gap-2">
         <Input
           label="Ticket Price"
           type="number"
@@ -62,7 +62,7 @@ const ServiceDetails = ({ register, setServiceImage }) => {
           {...register("ticket_validity", { require: true })}
         />
       </div>
-      <div className="w-full">
+      {/* <div className="w-full">
         <label className="inline-block mb-1 pl-1" htmlFor="dis">
           Discription
         </label>
@@ -71,7 +71,7 @@ const ServiceDetails = ({ register, setServiceImage }) => {
           {...register("service_discription", { required: true })}
           className={`px-3 py-2 rounded-lg text-black bg-white outline-none focus:bg-gray-50 duration-200 border border-gray-200 w-full focus:ring-2 ring-blue-400 dis h-[10rem]`}
         />
-      </div>
+      </div> */}
     </div>
   );
 };

@@ -19,6 +19,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+
+.rem-scrl ::-webkit-scrollbar {
+  display: none; /* width of the entire scrollbar */
+}
+
 .sections {
   display: flex;
   flex-direction: column;

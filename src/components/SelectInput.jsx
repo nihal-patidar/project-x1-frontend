@@ -8,7 +8,7 @@ const SelectInput = React.forwardRef(({options=[],label,...props},ref) => {
         ref={ref}
         {...props}
         placeholder="Ticket Validity"
-        className={`px-3 py-2 rounded-lg text-black outline-none focus:bg-gray-50 duration-200 border border-gray-200 w-full focus:ring-2 ring-blue-400 dis`}
+        className={`px-3 py-2 rounded-lg text-black bg-white outline-none focus:bg-gray-50 duration-200 border border-gray-200 w-full focus:ring-2 ring-blue-400 dis`}
         >
             {
                 options.map((ele,index)=>{

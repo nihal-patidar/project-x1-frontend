@@ -18,6 +18,7 @@ import {
 } from "antd";
 import { UserContext } from "../../context/UserContext";
 import { ServiceContext } from "../../context/ServiceContext";
+import { useNavigate } from "react-router-dom";
 const { RangePicker } = DatePicker;
 const { TextArea } = Input;
 const normFile = (e) => {
@@ -31,6 +32,7 @@ const ValidatorForm = () => {
   const { userData } = useContext(UserContext);
   let { services, setServices } = useContext(ServiceContext);
   const [validatorImage, setValidatorImage] = React.useState(null);
+  const navigate = useNavigate();
 
   const [componentDisabled, setComponentDisabled] = useState(false);
   const [validatorData, setValidatorData] = useState({
@@ -76,6 +78,7 @@ const ValidatorForm = () => {
         console.log(response);
         setAllValidator((prev) => [...prev, response.data.validator]);
         toast.success("validator added successfully!");
+        navigate('/home/validators');
         reset();
       })
       .catch((err) => {
@@ -102,10 +105,15 @@ const ValidatorForm = () => {
         disabled={componentDisabled}
         style={{
           minWidth: 600,
+          height : "100%",
+          backgroundColor : 'whitesmoke',
+          display : 'flex',
+          padding : '50px'
         }}
       >
+        <div className="flex flex-col w-1/2 h-full">
         <Form.Item
-          label="Upload Your Photo"
+          label="Upload Photo"
           valuePropName="fileList"
           getValueFromEvent={normFile}
         >
@@ -118,7 +126,6 @@ const ValidatorForm = () => {
             }}
           ></Input>
         </Form.Item>
-
         <Form.Item label="Name">
           <Input
             onChange={(e) => {
@@ -126,6 +133,7 @@ const ValidatorForm = () => {
             }}
           />
         </Form.Item>
+
         <Form.Item label="Email">
           <Input
             onChange={(e) => {
@@ -140,6 +148,41 @@ const ValidatorForm = () => {
             }}
           />
         </Form.Item>
+        <Form.Item label="Service">
+          <Select
+            onChange={(e) => {
+              SubmitData("service_id", e);
+            }}
+          >
+            {services &&
+              services.map((service, index) => {
+                return (
+                  <Select.Option value={service._id}>
+                    {service.service_name}
+                  </Select.Option>
+                );
+              })}
+          </Select>
+        </Form.Item>
+        <Button
+          style={{
+            backgroundColor: "#292c28d9",
+            color: "white",
+            fontWeight: "bolder",
+            width : '150px',
+            marginLeft : '200px',
+            marginTop : '60px'
+          }}
+          onClick={() => {
+            // AddValidator(validatorData.service_id);
+            navigate('/home/validators');
+            // closePopup("addValidatorForm");
+          }}
+        >
+        Cancel
+        </Button>
+        </div>
+        <div className="flex flex-col w-1/2 h-full">
         <Form.Item label="Mobile">
           <Input
             onChange={(e) => {
@@ -172,13 +215,6 @@ const ValidatorForm = () => {
             <Radio value="Other"> Other </Radio>
           </Radio.Group>
         </Form.Item>
-        <Form.Item label="Position">
-          <Input
-            onChange={(e) => {
-              SubmitData("position", e.target.value);
-            }}
-          />
-        </Form.Item>
         <Form.Item label="Salary">
           <Input
             onChange={(e) => {
@@ -187,7 +223,25 @@ const ValidatorForm = () => {
             type="Number"
           />
         </Form.Item>
-        <Form.Item label="Shift">
+
+        <Button
+          style={{
+            backgroundColor: "#292c28d9",
+            color: "white",
+            fontWeight: "bolder",
+            width : '150px',
+            marginLeft : '200px',
+            marginTop : '60px'
+          }}
+          onClick={() => {
+            AddValidator(validatorData.service_id);
+            // closePopup("addValidatorForm");
+            // navigate('/home/validators')
+          }}
+        >
+          Submit
+        </Button>
+        {/* <Form.Item label="Shift">
           <Select
             onChange={(e) => {
               SubmitData("time_shift", e);
@@ -198,44 +252,18 @@ const ValidatorForm = () => {
             <Select.Option value="Shift-3">Shift-3</Select.Option>
             <Select.Option value="Shift-4">Shift-4</Select.Option>
           </Select>
-        </Form.Item>
-        <Form.Item label="Choose the Service to which You want to Add the validator">
-          <Select
-            onChange={(e) => {
-              SubmitData("service_id", e);
-            }}
-          >
-            {services &&
-              services.map((service, index) => {
-                return (
-                  <Select.Option value={service._id}>
-                    {service.service_name}
-                  </Select.Option>
-                );
-              })}
-          </Select>
-        </Form.Item>
-        <Form.Item label="WorkTime">
-          <TimePicker
-            onChange={(e) => {
-              SubmitData("WorkTime", e.d);
-            }}
-          />
-        </Form.Item>
+        </Form.Item> */}
+        </div>
+        
 
-        <Button
-          style={{
-            backgroundColor: "#292c28d9",
-            color: "white",
-            fontWeight: "bolder",
-          }}
-          onClick={() => {
-            AddValidator(validatorData.service_id);
-            closePopup("addValidatorForm");
-          }}
-        >
-          Submit
-        </Button>
+        
+        
+        
+        
+        
+        
+
+        
       </Form>
     </>
   );

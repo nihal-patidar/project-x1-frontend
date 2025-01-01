@@ -35,6 +35,8 @@ body::-webkit-scrollbar {
   display: none; /* width of the entire scrollbar */
 }
 
+
+
 .list-box::-webkit-scrollbar {
   width: 12px;
   /* height: 100px; */

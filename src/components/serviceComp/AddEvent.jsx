@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { Stepper, Step, Button, Typography } from "@material-tailwind/react";
 import {
   CogIcon,
@@ -11,64 +11,47 @@ import { useForm } from "react-hook-form";
 import { ServiceContext } from "../../context/ServiceContext";
 import axios from "axios";
 import api from "../../../axiosConfig";
-
 import { UserContext } from "../../context/UserContext";
 import { toast } from "react-toastify";
 import { dataContext } from "../../context/DataState";
+import Payment from "./Payment";
 import { useNavigate } from "react-router-dom";
 
-export function UpdateForm({ initialValues, currentServiceFormId }) {
+export function StepperWithContent() {
   const [activeStep, setActiveStep] = React.useState(0);
   const [isLastStep, setIsLastStep] = React.useState(false);
   const [isFirstStep, setIsFirstStep] = React.useState(false);
-  //   const [initialValues , setInitialValues] = React.useState();
+  const [serviceImage, setServiceImage] = React.useState(null);
   const { closePopup } = useContext(dataContext);
-  const navigate = useNavigate();
-  let { register, handleSubmit, getValues } = useForm({
-    defaultValues: initialValues,
-  });
 
-  useEffect(() => {
-    () => console.log("initial value", initialValues);
-  }, []);
   const handleNext = () => !isLastStep && setActiveStep((cur) => cur + 1);
   const handlePrev = () => !isFirstStep && setActiveStep((cur) => cur - 1);
+  const navigate = useNavigate();
 
-  let { serviceFormData, setServices } = useContext(ServiceContext);
+  let { services, setServices } = useContext(ServiceContext);
+  let { register, handleSubmit, reset } = useForm();
   let token = localStorage.getItem("userData");
-
-  const handleDelete = async () => {
-    console.log("current service id", currentServiceFormId);
-
-    await api
-      .post(`/service/deleteService/${currentServiceFormId}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .catch((err) => {
-        console.log(err.response.data);
-        toast.warning(err.response.data.msg);
-      });
-    // closePopup("updateServiceForm");
-    navigate("/home/services");
-    window.location.reload();
-  };
-
   const serviceFormHandler = async (data) => {
     await api
-      .put(`/service/updateService/${currentServiceFormId}`, data, {
-        headers: {
-          Authorization: `Bearer ${token}`,
+      .put(
+        "/service/addService",
+        {
+          data: data,
+          image: serviceImage,
         },
-      })
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      )
       .then((response) => {
         console.log(response);
         setServices((prev) => [...prev, response.data.service]);
-        toast.success("Updattion successfully done!!");
-        navigate("/home/services");
-        window.location.reload();
-
+        navigate('/home/services');
+        toast.success("Service Added !!");
+        // closePopup("addServiceForm");
         reset();
       })
       .catch((err) => {
@@ -77,7 +60,7 @@ export function UpdateForm({ initialValues, currentServiceFormId }) {
       });
   };
   return (
-    <form onSubmit={handleSubmit(serviceFormHandler)}>
+    <form onSubmit={handleSubmit(serviceFormHandler)} action="" style={{backgroundColor : 'whitesmoke' , height : "100%" ,}}>
       <div className="w-full px-24 py-4 flex flex-col gap-4">
         <div className="steps">
           <Stepper
@@ -96,51 +79,44 @@ export function UpdateForm({ initialValues, currentServiceFormId }) {
                 </Typography>
               </div>
             </Step>
-            {/* <Step onClick={() => setActiveStep(1)}>
+            <Step onClick={() => setActiveStep(1)}>
               <BuildingLibraryIcon className="h-5 w-5" />
               <div className="absolute -bottom-[1.5rem] w-max text-center">
                 <Typography
                   color={activeStep === 1 ? "blue-gray" : "gray"}
                   className="font-normal"
                 >
-                  Details about yout account.
+                  Make a Payment
                 </Typography>
               </div>
-            </Step> */}
+            </Step>
           </Stepper>
         </div>
         <div className="forms mt-10">
-          {activeStep == 0 ? <ServiceDetails register={register} /> : <></>}
+          {activeStep == 0 ? (
+            <ServiceDetails
+              register={register}
+              setServiceImage={setServiceImage}
+            />
+          ) : (
+            <Payment />
+          )}
         </div>
-        {/* <div className="flex justify-between">
+        <div className="flex justify-between">
           <Button onClick={handlePrev} disabled={isFirstStep}>
             Prev
           </Button>
-          {activeStep == 0 ? (
+          {activeStep == 1 ? (
             <Button type="submit">Submit</Button>
           ) : (
             <Button onClick={handleNext} disabled={isLastStep}>
               Next
             </Button>
           )}
-        </div> */}
+        </div>
       </div>
-      <div className="flex justify-around w-full px-80 mt-40">
-        <Button
-          className="bg-gray-700 "
-          onClick={() => {
-            navigate("/home/services");
-          }}
-        >
-          Cancel
-        </Button>
-        <Button className="bg-green-500" type="submit">
-          Submit
-        </Button>
-        <Button className="bg-red-800 " onClick={handleDelete}>
-          Delete
-        </Button>
-      </div>
+
+      <Button onClick={()=>{navigate('/home/services')}} style={{position : 'absolute' , top : '130px' , left : '550px'}}> Cancel</Button>
     </form>
   );
 }
