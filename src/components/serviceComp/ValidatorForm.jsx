@@ -27,7 +27,7 @@ const normFile = (e) => {
   }
   return e?.fileList;
 };
-const ValidatorForm = () => {
+const CreateValidatorForm = () => {
   const { closePopup, setAllValidator } = useContext(dataContext);
   const { userData } = useContext(UserContext);
   let { services, setServices } = useContext(ServiceContext);
@@ -78,7 +78,7 @@ const ValidatorForm = () => {
         console.log(response);
         setAllValidator((prev) => [...prev, response.data.validator]);
         toast.success("validator added successfully!");
-        navigate('/home/validators');
+        navigate("/home/validators");
         reset();
       })
       .catch((err) => {
@@ -105,168 +105,139 @@ const ValidatorForm = () => {
         disabled={componentDisabled}
         style={{
           minWidth: 600,
-          height : "100%",
-          backgroundColor : 'whitesmoke',
-          display : 'flex',
-          padding : '50px'
+          height: "100%",
+          backgroundColor: "whitesmoke",
+          padding: "50px",
         }}
       >
-        <div className="flex flex-col w-1/2 h-full">
-        <Form.Item
-          label="Upload Photo"
-          valuePropName="fileList"
-          getValueFromEvent={normFile}
-        >
-          <Input
-            name="image"
-            type="file"
-            preview={previewImage}
-            onChange={(e) => {
-              setValidatorImage(e.target.files[0]);
-            }}
-          ></Input>
-        </Form.Item>
-        <Form.Item label="Name">
-          <Input
-            onChange={(e) => {
-              SubmitData("validator_name", e.target.value);
-            }}
-          />
-        </Form.Item>
+        <div className="w-full flex flex-col sm:flex-row h-[90%] overflow-y-scroll">
+          <div className="flex flex-col w-full sm:w-1/2 ">
+            <Form.Item
+              label="Upload Photo"
+              valuePropName="fileList"
+              getValueFromEvent={normFile}
+            >
+              <Input
+                name="image"
+                type="file"
+                preview={previewImage}
+                onChange={(e) => {
+                  setValidatorImage(e.target.files[0]);
+                }}
+              ></Input>
+            </Form.Item>
+            <Form.Item label="Name">
+              <Input
+                onChange={(e) => {
+                  SubmitData("validator_name", e.target.value);
+                }}
+              />
+            </Form.Item>
 
-        <Form.Item label="Email">
-          <Input
-            onChange={(e) => {
-              SubmitData("validator_email", e.target.value);
-            }}
-          />
-        </Form.Item>
-        <Form.Item label="Password">
-          <Input
-            onChange={(e) => {
-              SubmitData("password", e.target.value);
-            }}
-          />
-        </Form.Item>
-        <Form.Item label="Service">
-          <Select
-            onChange={(e) => {
-              SubmitData("service_id", e);
-            }}
-          >
-            {services &&
-              services.map((service, index) => {
-                return (
-                  <Select.Option value={service._id}>
-                    {service.service_name}
-                  </Select.Option>
-                );
-              })}
-          </Select>
-        </Form.Item>
-        <Button
-          style={{
-            backgroundColor: "#292c28d9",
-            color: "white",
-            fontWeight: "bolder",
-            width : '150px',
-            marginLeft : '200px',
-            marginTop : '60px'
-          }}
-          onClick={() => {
-            // AddValidator(validatorData.service_id);
-            navigate('/home/validators');
-            // closePopup("addValidatorForm");
-          }}
-        >
-        Cancel
-        </Button>
+            <Form.Item label="Email">
+              <Input
+                onChange={(e) => {
+                  SubmitData("validator_email", e.target.value);
+                }}
+              />
+            </Form.Item>
+            <Form.Item label="Password">
+              <Input
+                onChange={(e) => {
+                  SubmitData("password", e.target.value);
+                }}
+              />
+            </Form.Item>
+            <Form.Item label="Service">
+              <Select
+                onChange={(e) => {
+                  SubmitData("service_id", e);
+                }}
+              >
+                {services &&
+                  services.map((service, index) => {
+                    return (
+                      <Select.Option value={service._id}>
+                        {service.service_name}
+                      </Select.Option>
+                    );
+                  })}
+              </Select>
+            </Form.Item>
+          </div>
+          <div className="flex flex-col w-full sm:w-1/2">
+            <Form.Item label="Mobile">
+              <Input
+                onChange={(e) => {
+                  SubmitData("mobile_number", e.target.value);
+                }}
+              />
+            </Form.Item>
+            <Form.Item label="Address">
+              <Input
+                onChange={(e) => {
+                  SubmitData("validator_address", e.target.value);
+                }}
+              />
+            </Form.Item>
+            <Form.Item label="AadhaarNo">
+              <Input
+                onChange={(e) => {
+                  SubmitData("aadhar_number", e.target.value);
+                }}
+              />
+            </Form.Item>
+            <Form.Item label="Gender">
+              <Radio.Group
+                onChange={(e) => {
+                  SubmitData("gender", e.target.value);
+                }}
+              >
+                <Radio value="Male"> Male </Radio>
+                <Radio value="Female"> Female </Radio>
+                <Radio value="Other"> Other </Radio>
+              </Radio.Group>
+            </Form.Item>
+            <Form.Item label="Salary">
+              <Input
+                onChange={(e) => {
+                  SubmitData("salary", e.target.value);
+                }}
+                type="Number"
+              />
+            </Form.Item>
+          </div>
         </div>
-        <div className="flex flex-col w-1/2 h-full">
-        <Form.Item label="Mobile">
-          <Input
-            onChange={(e) => {
-              SubmitData("mobile_number", e.target.value);
-            }}
-          />
-        </Form.Item>
-        <Form.Item label="Address">
-          <Input
-            onChange={(e) => {
-              SubmitData("validator_address", e.target.value);
-            }}
-          />
-        </Form.Item>
-        <Form.Item label="AadhaarNo">
-          <Input
-            onChange={(e) => {
-              SubmitData("aadhar_number", e.target.value);
-            }}
-          />
-        </Form.Item>
-        <Form.Item label="Gender">
-          <Radio.Group
-            onChange={(e) => {
-              SubmitData("gender", e.target.value);
-            }}
-          >
-            <Radio value="Male"> Male </Radio>
-            <Radio value="Female"> Female </Radio>
-            <Radio value="Other"> Other </Radio>
-          </Radio.Group>
-        </Form.Item>
-        <Form.Item label="Salary">
-          <Input
-            onChange={(e) => {
-              SubmitData("salary", e.target.value);
-            }}
-            type="Number"
-          />
-        </Form.Item>
 
-        <Button
-          style={{
-            backgroundColor: "#292c28d9",
-            color: "white",
-            fontWeight: "bolder",
-            width : '150px',
-            marginLeft : '200px',
-            marginTop : '60px'
-          }}
-          onClick={() => {
-            AddValidator(validatorData.service_id);
-            // closePopup("addValidatorForm");
-            // navigate('/home/validators')
-          }}
-        >
-          Submit
-        </Button>
-        {/* <Form.Item label="Shift">
-          <Select
-            onChange={(e) => {
-              SubmitData("time_shift", e);
+        <div className="flex justify-around mx-auto w-80 mt-10">
+          <Button
+            style={{
+              backgroundColor: "#292c28d9",
+              color: "white",
+              fontWeight: "bolder",
+            }}
+            onClick={() => {
+              navigate("/home/validators");
             }}
           >
-            <Select.Option value="Shift-1">Shift-1</Select.Option>
-            <Select.Option value="Shift-2">Shift-2</Select.Option>
-            <Select.Option value="Shift-3">Shift-3</Select.Option>
-            <Select.Option value="Shift-4">Shift-4</Select.Option>
-          </Select>
-        </Form.Item> */}
+            Cancel
+          </Button>
+          <Button
+            style={{
+              backgroundColor: "#292c28d9",
+              color: "white",
+              fontWeight: "bolder",
+            }}
+            onClick={() => {
+              AddValidator(validatorData.service_id);
+            }}
+          >
+            Submit
+          </Button>
         </div>
-        
-
-        
-        
-        
-        
-        
-        
-
-        
       </Form>
     </>
   );
 };
 
-export default ValidatorForm ;
+export default CreateValidatorForm;

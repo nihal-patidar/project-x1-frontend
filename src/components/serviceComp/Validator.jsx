@@ -1,7 +1,7 @@
 import React from "react";
+import PasswordField from "./PasswordView";
 
 const Validator = (props) => {
-  console.log("One Validator", props);
   const {
     validator_name,
     validator_email,
@@ -13,81 +13,86 @@ const Validator = (props) => {
     salary,
     time_shift,
     service_id,
+    password,
     work_time,
     validator_image_url,
   } = props.validator;
 
   return (
-    <div class=" flex w-[95%] h-56 bg-white shadow-md items-center border-2 border-orange-200 rounded-lg overflow-hidden justify-around my-2">
-      <div className="flex flex-col justify-around center w-52">
-        {/* <img
-          class="h-32 w-32 object-cover bg-slate-200"
-          src={validator_image_url}
-          alt="Profile Photo"
-        /> */}
-        <div className="relative w-32 h-32 mx-auto mb-2 overflow-hidden rounded-full border-4 border-teal-400 shadow-lg hover:shadow-teal-500/50 hover:scale-110 transition-transform duration-300 ease-in-out">
-          <img
-            src={validator_image_url} // Replace with your actual image URL
-            alt="Profile"
-            className="w-full h-full object-cover"
-          />
-          {/* <div className="absolute inset-0 bg-gradient-to-r from-black to-transparent opacity-60" /> */}
+    <div className="flex flex-col lg:flex-row w-full lg:w-[95%] bg-gradient-to-r from-orange-100 to-teal-100 shadow-lg border border-orange-300 rounded-lg overflow-hidden justify-between p-4 gap-6 my-4">
+      {/* Profile Section */}
+      <div className="flex w-full lg:w-1/2 justify-around gap-6">
+        <div className="flex flex-col items-center w-full lg:w-1/2">
+          <div className="relative w-36 h-36 mx-auto overflow-hidden rounded-full border-4 border-teal-500 shadow-lg hover:shadow-teal-500/50 hover:scale-110 transition-transform duration-300 ease-in-out">
+            <img
+              src={validator_image_url}
+              alt="Profile"
+              className="w-full h-full object-cover"
+            />
+          </div>
+          <h2 className="text-xl font-bold mt-3 text-teal-800 text-center">
+            {validator_name}
+          </h2>
         </div>
-        {/* Gradient Overlay */}
-        <h2 class="text-xl font-bold mb-2">
-          <span>{validator_name}</span>
-        </h2>
+        <div className="flex flex-col w-full md:w-1/2 space-y-2">
+          <p className="text-gray-700">
+            <span className="font-semibold text-teal-700">Email:</span>
+            <br />
+            <span>{validator_email}</span>
+          </p>
+          <p className="text-gray-700">
+            <span className="font-semibold text-teal-700">Mobile No:</span>
+            <br />
+            <span>{mobile_number}</span>
+          </p>
+          <p className="text-gray-700">
+            <span className="font-semibold text-teal-700">Gender:</span>
+            <br />
+            <span>{gender}</span>
+          </p>
+        </div>
       </div>
-      <div class="mr-6">
-        <p class="text-gray-600 mb-2 service_fields">
-          <span class="font-semibold">Email :</span>
-          <br />
-          <span>{validator_email}</span>
-        </p>
-        <p class="text-gray-600 mb-2 service_fields">
-          <span class="font-semibold">Mobile No:</span>
-          <br />
-          <span>{mobile_number}</span>
-        </p>
-        <p class="text-gray-600 mb-2 service_fields">
-          <span class="font-semibold">Gender : </span>
-          <br />
-          <span>{gender}</span>
-        </p>
-      </div>
-      <div class="mr-6">
-        <p class="text-gray-600 mb-2 service_fields">
-          <span class="font-semibold">Address :</span>
-          <br />
-          <span>{validator_address}</span>
-        </p>
-        <p class="text-gray-600 mb-2 service_fields">
-          <span class="font-semibold">Aadhar No :</span>
-          <br />
-          <span>{aadhar_number}</span>
-        </p>
-        <p class="text-gray-600 mb-2 service_fields">
-          <span class="font-semibold">Salary :</span>
-          <br />
-          <span>{salary}</span>
-        </p>
-      </div>
-      <div>
-        <p class="text-gray-600 mb-2 service_fields">
-          <span class="font-semibold">Time Shift :</span>
-          <br />
-          <span>{time_shift}</span>
-        </p>
-        <p class="text-gray-600 mb-2 service_fields">
-          <span class="font-semibold">Position :</span>
-          <br />
-          <span>{position}</span>
-        </p>
-        <p class="text-gray-600 mb-2 service_fields">
-          <span class="font-semibold">Work Time:</span>
-          <br />
-          <span>{work_time}</span>
-        </p>
+      {/* Details Section */}
+      <div className="flex w-full lg:w-1/2 justify-around gap-6">
+        {/* Column 1 */}
+
+        {/* Column 2 */}
+        <div className="flex flex-col w-full md:w-1/2 space-y-2">
+          <p className="text-gray-700">
+            <span className="font-semibold text-teal-700">Address:</span>
+            <br />
+            <span>{validator_address}</span>
+          </p>
+          <p className="text-gray-700">
+            <span className="font-semibold text-teal-700">Aadhar No:</span>
+            <br />
+            <span>{aadhar_number}</span>
+          </p>
+          <p className="text-gray-700">
+            <span className="font-semibold text-teal-700">Password:</span>
+            <br />
+            <PasswordField value={password} />
+          </p>
+        </div>
+
+        {/* Column 3 */}
+        <div className="flex flex-col w-full md:w-1/2 space-y-2">
+          <p className="text-gray-700">
+            <span className="font-semibold text-teal-700">Time Shift:</span>
+            <br />
+            <span>{time_shift}</span>
+          </p>
+          <p className="text-gray-700">
+            <span className="font-semibold text-teal-700">Position:</span>
+            <br />
+            <span>{position}</span>
+          </p>
+          <p className="text-gray-700">
+            <span className="font-semibold text-teal-700">Work Time:</span>
+            <br />
+            <span>{work_time}</span>
+          </p>
+        </div>
       </div>
     </div>
   );

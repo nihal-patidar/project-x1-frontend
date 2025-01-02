@@ -34,20 +34,20 @@ const OverViewStrip = ({service_id}) => {
   }, []);
   return (
     <div className="w-full flex flex-col items-center">
-        <div className="flex space-x-4 items-center p-4 bg-gray-100 rounded-lg shadow-lg w-full">
-      <div className="flex-1 text-center py-2 px-4 rounded-lg bg-gradient-to-r from-green-400 to-blue-500 text-white font-semibold shadow-md cursor-pointer hover:opacity-90">
+        <div className="flex space-x-4 items-center sm:p-4 bg-gray-100 rounded-lg shadow-lg w-full">
+      <div className="flex-1 text-center sm:py-2 px-4 rounded-lg bg-gradient-to-r from-green-400 to-blue-500 text-white font-semibold shadow-md cursor-pointer hover:opacity-90">
         <div>All</div>
-        <div className="text-xl font-bold">{visitors.a}</div>
+        <div className="text:lg sm:text-xl font-bold">{visitors.a}</div>
       </div>
 
-      <div className="flex-1 text-center py-2 px-4 rounded-lg bg-gradient-to-r from-blue-400 to-purple-500 text-white font-semibold shadow-md cursor-pointer hover:opacity-90">
+      <div className="flex-1 text-center sm:py-2 px-4 rounded-lg bg-gradient-to-r from-blue-400 to-purple-500 text-white font-semibold shadow-md cursor-pointer hover:opacity-90">
         <div>Visited</div>
-        <div className="text-xl font-bold">{visitors.b}</div>
+        <div className="text:lg sm:text-xl font-bold">{visitors.b}</div>
       </div>
 
-      <div className="flex-1 text-center py-2 px-4 rounded-lg bg-gradient-to-r from-red-400 to-pink-500 text-white font-semibold shadow-md cursor-pointer hover:opacity-90">
+      <div className="flex-1 text-center sm:py-2 px-4 rounded-lg bg-gradient-to-r from-red-400 to-pink-500 text-white font-semibold shadow-md cursor-pointer hover:opacity-90">
         <div>Not Yet</div>
-        <div className="text-xl font-bold">{visitors.c}</div>
+        <div className="text:lg sm:text-xl font-bold">{visitors.c}</div>
       </div>
     </div>
       <Button onClick={()=>{navigate('/home/visitors',{state : {id : service_id}});}} className="bg-green-300 mt-4 font-semibold">Open Visitors</Button>

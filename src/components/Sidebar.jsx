@@ -3,7 +3,7 @@ import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTachometerAlt, faUser, faCog, faEnvelope, faSignOutAlt, faSuitcase , faServer ,} from '@fortawesome/free-solid-svg-icons';
+import { faTachometerAlt, faUser, faCog, faEnvelope, faSignOutAlt, faSuitcase , faServer, faAdd, faTicket ,} from '@fortawesome/free-solid-svg-icons';
 import { UserContext } from '../context/UserContext';
 
 const Sidebar = () => {
@@ -20,18 +20,22 @@ const Sidebar = () => {
   const sidebarItems = [
     { id: 0, name: 'Dashboard', path: '/home', icon: faTachometerAlt },
     { id: 1, name: 'Services', path: '/home/services', icon: faServer },
-    { id: 2, name: 'Validator', path: '/home/validators', icon: faSuitcase },
-    { id: 3, name: 'Logout', path: '/', icon: faSignOutAlt ,click : logout},
+    { id: 3, name: 'Add Service', path: '/home/create-service', icon: faAdd},
+    { id: 2, name: 'Validator', path: '/home/validators', icon: faTicket },
+    { id: 4, name: 'Add Validator', path: '/home/create-validator-form', icon: faAdd},
+    { id: 5, name: 'Logout', path: '/', icon: faSignOutAlt ,click : logout},
   ];
 
   const handleItemClick = (id) => {
     setActiveIndex(id);
   };
+  
 
   return (
-    <div className="flex flex-col h-full w-80  bg-slate-100 text-white p-4">
-      <h2 className="font-bold text-2xl text-[#26bc82] w-full pl-4 py-4 border-b-2 border-green-300">E-Validation</h2>
-      <ul className="flex-grow">
+    <div className="flex flex-col h-full w-60 sm:w-80 bg-[#d73939d6] sm:bg-transparent text-white p-4">
+    
+      <h2 className="hidden sm:block font-bold text-2xl text-[#26bc82] w-full pl-12 py-4 border-b-2 border-green-300">E-Validation</h2>
+      <ul className="flex-grow mt-10 sm:mt-0 font-semibold">
         {sidebarItems.map((item) => (
           <li key={item.id} className='py-1' onClick={item.click}>
             <Link
@@ -56,7 +60,7 @@ const Sidebar = () => {
 const ProfileCard = () => {
   const {userData} = useContext(UserContext);
   return (
-    <div className="mt-auto p-4 w-full max-w-xs bg-gradient-to-br from-[#949392] to-[#6a686a] rounded-lg shadow-2xl text-center transform transition-transform duration-300 ease-in-out">
+    <div className="mt-auto p-4 w-full max-w-xs border-2 border-yellow-600 bg-transparent  rounded-lg shadow-2xl text-center transform transition-transform duration-300 ease-in-out">
       {/* Profile Picture with Glow Effect */}
       <div className="relative w-20 h-20 mx-auto mb-2 overflow-hidden rounded-full border-4 border-teal-400 shadow-lg hover:shadow-teal-500/50 hover:scale-110 transition-transform duration-300 ease-in-out">
         <img

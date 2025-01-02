@@ -1,22 +1,16 @@
 import React, {
   useMemo,
   useState,
-  useContext,
   useEffect,
   Suspense,
 } from "react";
-// import ValidatorInService from './ValidatorInService';
 const ValidatorInService = React.lazy(() => import("./ValidatorInService"));
 import QRpreView from "./QRpreView";
 import FormPreView from "./FormPreView";
 
 
 import { Button, Checkbox, Divider, Tabs } from "antd";
-import { dataContext, DataState } from "../../context/DataState";
-import ServiceVisitors from "./ServiceVisitors";
 import { useNavigate } from "react-router-dom";
-import ServiceDetails from "./ServiceDetails";
-// import OverViewStrip from "./OverView";
 import OverViewStrip from "./OverView";
 const CheckboxGroup = Checkbox.Group;
 
@@ -32,19 +26,24 @@ const ServiceTabs = ({
   formId = null,
   service_id,
 }) => {
-  const { currentServiceFormId, setCurrentServiceFormId, openPopup } =
-    useContext(dataContext);
+
 
     const navigate = useNavigate();
 
-    const openVisitorArea = ()=>{
-      navigate('/home/visitors',{state : {id : service_id}});
-    }
+    
 
   let items = [
     {
-      label: "Visitor",
+      label: "Validator",
       key: "1",
+      children: 
+        <Suspense>
+          <ValidatorInService service_id={service_id} />
+        </Suspense>
+    },
+    {
+      label: "Visitor",
+      key: "4",
       children : <OverViewStrip service_id={service_id}/>
       
     },
@@ -64,16 +63,7 @@ const ServiceTabs = ({
         />
       ),
     },
-    {
-      label: "Validator",
-      key: "4",
-      // children: (<ServiceVisitors service_id={service_id}></ServiceVisitors>),
-      // children : <Button onClick={()=>openVisitorArea()} >Open Visitors</Button>
-      children: 
-        <Suspense>
-          <ValidatorInService service_id={service_id} />
-        </Suspense>
-    },
+    
   ];
   const [position, setPosition] = useState(["left", "right"]);
   const slot = useMemo(() => {
@@ -97,14 +87,13 @@ const ServiceTabs = ({
           <Button
             onClick={() => {
               navigate('/home/update-service-data',{state : {service_id : service_id}})
-              // setCurrentServiceFormId(service_id);
-              // openPopup("updateServiceForm");
             }}
           >
             Edit{" "}
           </Button>
         }
         items={items}
+        style={{padding : '10px 20px'}}
       />
     </>
   );

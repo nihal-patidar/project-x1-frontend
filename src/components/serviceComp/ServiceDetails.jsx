@@ -17,7 +17,6 @@ const ServiceDetails = ({ register, setServiceImage }) => {
 
   const previewImage = (e) => {
     let value = e.target.files[0];
-    // setServiceImage(URL.createObjectURL(value));
     setServiceImage(value);
     }
 
@@ -32,7 +31,7 @@ const ServiceDetails = ({ register, setServiceImage }) => {
           {...register("image", { required: true })}
         ></Input>
       </div>
-      <div className="flex gap-2">
+      <div className="flex flex-col sm:flex-row gap-2">
         <Input
           label="Service Name"
           type="text"
@@ -47,7 +46,7 @@ const ServiceDetails = ({ register, setServiceImage }) => {
           {...register("service_address", { required: true })}
         ></Input>
       </div>
-      <div className="flex gap-2">
+      <div className="flex flex-col sm:flex-row gap-2">
         <Input
           label="Ticket Price"
           type="number"

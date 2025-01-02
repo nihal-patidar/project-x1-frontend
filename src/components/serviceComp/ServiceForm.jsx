@@ -1,34 +1,19 @@
 import React, { useContext, useState } from "react";
 import { CloseCircleOutlined } from "@ant-design/icons";
 import { dataContext } from "../../context/DataState";
-import {
-  Button,
-  Cascader,
-  DatePicker,
-  Form,
-  Input,
-  InputNumber,
-  Radio,
-  Select,
-  Switch,
-  TreeSelect,
-} from "antd";
-import axios from "axios";
+import { Button, Form, Input, Select } from "antd";
 import api from "../../../axiosConfig";
-import welvideo from "../../../public/vedios/to-our-Service.mp4"
-
+import welvideo from "../../../public/vedios/to-our-Service.mp4";
 
 import { toast } from "react-toastify";
 import { ServiceContext } from "../../context/ServiceContext";
 import { useLocation, useNavigate } from "react-router-dom";
-const ServiceForm = ({formId}) => {
-  const { fields, setFieldsDatatype, Heloo, isOpen, closePopup } =
-    useContext(dataContext);
-  let { services, setServices } = useContext(ServiceContext);
+const ServiceForm = ({ formId }) => {
+  const { fields, setFieldsDatatype, Heloo } = useContext(dataContext);
   const navigate = useNavigate();
 
   const [componentSize, setComponentSize] = useState("default");
- 
+
   const onFormLayoutChange = ({ size }) => {
     setComponentSize(size);
   };
@@ -70,21 +55,7 @@ const ServiceForm = ({formId}) => {
   };
 
   return (
-    <div className="popup-window-2 flex flex-col justify-center bg-white h-full w-[700px] items-center">
-      {/* <button
-        className=""
-        style={{
-          color: "white",
-          fontWeight: "bolder",
-          border: "none",
-          zIndex: 5,
-        }}
-        onClick={() => {
-          navigate("/home/services");
-        }}
-      >
-        Close
-      </button> */}
+    <div className="flex flex-col justify-center bg-white overflow-y-scroll w-[700px] items-center">
       <Form
         color="red"
         labelCol={{
@@ -152,7 +123,6 @@ const ServiceForm = ({formId}) => {
   );
 };
 
-
 const VisitorFormCreate = () => {
   const { fields, setFieldsDatatype } = useContext(dataContext);
   const [fieldName, setField] = useState("");
@@ -180,33 +150,46 @@ const VisitorFormCreate = () => {
   };
   return (
     <div
-      className={`bg-white h-full w-full overflow-y-auto border-2 border-gray-300 box-border px-7 list-box`}
+      className={`bg-white h-full w-full border-2 border-gray-300 box-border px-7 list-box overflow-y-scroll pb-10`}
     >
-      <div className="service-form-builder py-0 flex flex-col h-full justify-start items-center w-full   ">
+      <div className="service-form-builder py-0 flex flex-col sm:h-full justify-start items-center w-full   ">
         <div className="flex justify-between w-full">
-          <h2
-            className="text-[#872323] 
-                                  text-xl font-extrabold shadow-lg text-center w-[400px]"
-          >
-            Creating Visitors Form
-          </h2>
-          <p className="text-[#261b55] 
-                                  text-xl font-bold shadow-lg text-center ">For custom form design <span className="underline">Contact Us</span></p>
-
+          <div className="flex flex-col sm:flex-row">
+            <h2
+              className="text-[#872323] 
+                                  text-xl font-extrabold shadow-lg text-center w-fit sm:w-[400px]"
+            >
+              Creating Visitors Form
+            </h2>
+            <p
+              className="text-[#261b55] 
+                                 text-bases sm:text-xl font-bold shadow-lg text-center "
+            >
+              For custom form design{" "}
+              <span className="underline">Contact Us</span>
+            </p>
+          </div>
           <button
             className="relative font-bold left-5"
             style={{ color: "black", fontWeight: "bolder", border: "none" }}
-            onClick={() => {navigate('/home/services'); setFieldsDatatype([])}}
+            onClick={() => {
+              navigate("/home/services");
+              setFieldsDatatype([]);
+            }}
           >
             Close
           </button>
         </div>
 
-        <div className="flex justify-between items-start w-full h-full py-4 bg-white rounded">
+        <div className="flex flex-col sm:flex-row justify-between items-start w-full sm:h-full bg-white rounded">
           <div className="w-full flex flex-col h-full ">
             <div className="w-full flex flex-col justify-evenly items-center bg-white rounded-2xl px-5 py-8 h-60">
-            <p className="text-[#433d5d] 
-                                  text-xl font-bold text-center ">Choose Field </p>
+              <p
+                className="text-[#433d5d] 
+                                  text-xl font-bold text-center "
+              >
+                Choose Field{" "}
+              </p>
               <div className="flex justify-evenly flex-wrap w-full h-12">
                 {keywords.map((val, indx) => {
                   return (
@@ -257,38 +240,33 @@ const VisitorFormCreate = () => {
                   </Select>
                 </div>
                 <Button
-                onClick={() => {
-                  if(fieldName && fieldType){
-
-                  setFieldsDatatype((prev) => {
-                    return [...prev, { fieldName, fieldType }];
-                  });
-                  }
-                }}
-                className="relative top-7 w-20"
-                variant="outlined"
-                size="sm"
-                color=""
-              >
-                + Add
-              </Button>
+                  onClick={() => {
+                    if (fieldName && fieldType) {
+                      setFieldsDatatype((prev) => {
+                        return [...prev, { fieldName, fieldType }];
+                      });
+                    }
+                  }}
+                  className="relative top-7 w-20"
+                  variant="outlined"
+                  size="sm"
+                  color=""
+                >
+                  + Add
+                </Button>
               </div>
-              
             </div>
 
-            <div class="bg-white flex-col items-center rounded justify-center h-[240px] overflow-hidden">
+            <div class="bg-white hidden sm:block flex-col items-center rounded justify-center sm:mt-20 w-full overflow-hidden">
               <div class="rounded shadow-md">
-                <video className=" opacity-85" width="500px" autoPlay loop>
-                  <source
-                    src={welvideo}
-                    type="video/mp4"
-                  />
+                <video className=" opacity-85 scale-125" width="900px" autoPlay loop>
+                  <source src={welvideo} type="video/mp4" />
                 </video>
               </div>
             </div>
           </div>
 
-          <div className="flex justify-center w-full items-center ">
+          <div className="flex w-full items-center">
             <ServiceForm fields={fields} formId={service_id} />
           </div>
         </div>

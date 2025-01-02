@@ -109,7 +109,7 @@ body::-webkit-scrollbar {
   margin: 0px;
   position: relative;
   padding: 0px;
-  box-shadow: 0px 0px 4px 6px rgba(219, 211, 211, 0.5);
+  /* box-shadow: 0px 0px 4px 6px rgba(219, 211, 211, 0.5); */
 }
 
 .btn1 {
@@ -117,4 +117,13 @@ body::-webkit-scrollbar {
   top: -60px;
   right: 20px;
   z-index: 10;
+}
+
+.label-x {
+  color: blueviolet;
+  margin-right: '20px';
+}
+
+.value-x {
+  color : grey
 }

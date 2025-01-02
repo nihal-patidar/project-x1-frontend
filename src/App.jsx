@@ -17,11 +17,10 @@ import Dashboard from './components/Dashboard';
 import Landing from "./components/src/App.jsx";
 import FocusInput from './FocusInput.jsx';
 import ServiceVisitors from './components/serviceComp/ServiceVisitors.jsx';
-import ValidatorForm from './components/serviceComp/ValidatorForm.jsx';
-import { StepperWithContent } from './components/serviceComp/AddEvent.jsx';
-import ServiceForm from './components/serviceComp/ServiceForm.jsx';
+import { CreateService} from './components/serviceComp/AddEvent.jsx';
 import VisitorFormCreate from './components/serviceComp/ServiceForm.jsx';
 import { UpdateServiceForm } from './components/serviceComp/UpdateServiceData.jsx';
+import CreateValidatorForm from './components/serviceComp/ValidatorForm.jsx';
 const router= createBrowserRouter([
   {
     path:"/",
@@ -61,11 +60,11 @@ const router= createBrowserRouter([
       },
       {
         path : "create-validator-form",
-        element : <ValidatorForm />
+        element : <CreateValidatorForm />
       },
       {
         path : "create-service",
-        element : <StepperWithContent />
+        element : <CreateService />
       },
       {
         path : "create-visitor-form",
