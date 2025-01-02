@@ -14,7 +14,7 @@ import FormPage from './pages/FormPage';
 import ValidatorWorkSpace from './components/serviceComp/ValidatorWorkSpace';
 import VisitorStepForTicket from './visitor/VisitorStepForTicket';
 import Dashboard from './components/Dashboard';
-import Landing from "./components/src/App.jsx";
+import { LandingPage } from './pages/Landing.jsx';
 import FocusInput from './FocusInput.jsx';
 import ServiceVisitors from './components/serviceComp/ServiceVisitors.jsx';
 import { CreateService} from './components/serviceComp/AddEvent.jsx';
@@ -24,7 +24,7 @@ import CreateValidatorForm from './components/serviceComp/ValidatorForm.jsx';
 const router= createBrowserRouter([
   {
     path:"/",
-    element:<Landing/>
+    element:<LandingPage/>
   },
   {
     path:"/register",

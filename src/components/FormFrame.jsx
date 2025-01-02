@@ -8,8 +8,8 @@ import "../index.css"
 const FormFrame = () => {
     const {isOpen } = useContext(dataContext);
     return (
-        <div className='flex items-center rounded-md h-[100vh] bg-white w-full'>
-            <div className='h-full'>
+        <div className='flex flex-col justify-center sm:flex-row items-center rounded-md h-[100vh] bg-white w-full'>
+            <div className='h-full hidden sm:block'>
                 {isOpen.registration?
                 <img src={greenImage} alt="image" className='h-full rounded-r-xl' />
                 :
