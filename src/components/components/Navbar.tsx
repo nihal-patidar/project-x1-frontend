@@ -32,7 +32,7 @@ export default function Navbar() {
               <a href="#contact" className="nav-link">Contact</a>
             </div>
           </div> */}
-          <a href="/login" className="nav-link">Login</a>
+          <a href="login" className="nav-link">Login</a>
 
           <div className="md:hidden">
             <button onClick={() => setIsMenuOpen(!isMenuOpen)}>
