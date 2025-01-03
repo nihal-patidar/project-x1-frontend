@@ -11,7 +11,6 @@ const Sidebar = () => {
   const navigate = useNavigate();
   const {userData} = useContext(UserContext);
 
-
   const logout = ()=> {
     localStorage.removeItem('userData');
     navigate('/');
@@ -30,7 +29,6 @@ const Sidebar = () => {
     setActiveIndex(id);
   };
   
-
   return (
     <div className="flex flex-col h-full w-60 sm:w-80 bg-[#571a1aaf] sm:bg-transparent text-white p-4">
     
@@ -40,7 +38,7 @@ const Sidebar = () => {
           <li key={item.id} className='py-1' onClick={item.click}>
             <Link
               to={item.path}
-              className={`flex items-center py-2 px-4 transition-colors w-60 duration-300 rounded-md 
+              className={`flex items-center py-2 px-4 transition-colors w-full duration-300 rounded-md 
                 ${activeIndex === item.id ? 'bg-teal-500' : 'hover:bg-[#3a3551f4] hover:scale-95'}`}
               onClick={() => handleItemClick(item.id)}
               aria-current={activeIndex === item.id ? 'page' : undefined}
@@ -87,7 +85,5 @@ const ProfileCard = () => {
     </div>
   );
 };
-
-
 
 export default Sidebar;

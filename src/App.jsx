@@ -21,10 +21,12 @@ import { CreateService} from './components/serviceComp/AddEvent.jsx';
 import VisitorFormCreate from './components/serviceComp/ServiceForm.jsx';
 import { UpdateServiceForm } from './components/serviceComp/UpdateServiceData.jsx';
 import CreateValidatorForm from './components/serviceComp/ValidatorForm.jsx';
+import App1 from './components/App1'
 const router= createBrowserRouter([
   {
     path:"/",
-    element:<LandingPage/>
+    // element:<LandingPage/>
+    element : <App1 />
   },
   {
     path:"/register",
@@ -111,4 +113,4 @@ function App() {
   )
 }
 
-export default App
+export default App ;
