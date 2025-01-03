@@ -104,7 +104,6 @@ const CreateValidatorForm = () => {
         layout="horizontal"
         disabled={componentDisabled}
         style={{
-          minWidth: 600,
           height: "100%",
           backgroundColor: "whitesmoke",
           padding: "50px",

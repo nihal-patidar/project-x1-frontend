@@ -64,7 +64,7 @@ const Home = () => {
       </button>
 
       {showSidebar && (
-        <div className="absolute z-50 sm:static w-64 sm:h-full shadow-lg">
+        <div className="absolute z-50 sm:static sm:h-full shadow-lg">
           <Sidebar />
         </div>
       )}

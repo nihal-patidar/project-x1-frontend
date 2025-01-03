@@ -93,7 +93,7 @@ const ServiceTabs = ({
           </Button>
         }
         items={items}
-        style={{padding : '10px 20px'}}
+        className="px-2 py-3 sm:px-2 sm:py-5 "
       />
     </>
   );

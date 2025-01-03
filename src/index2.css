@@ -123,8 +123,8 @@ h1 {
 
 .workspace {
   background-color: #858282;
-  margin-top: 82px;
-  margin-left: 256px;
+  /* margin-top: 82px;
+  margin-left: 256px;  */
 }
 
 ul li:hover {
@@ -198,12 +198,12 @@ ul li:hover {
 }
 
 .workspace-window {
-  background-color: #5a5c57;
+  background-color: whitesmoke ;
   align-items: center;
 }
 
 .workspace-contents {
-  background-color : transparent ;
+  /* background-color : transparent ; */
 }
 
 code {

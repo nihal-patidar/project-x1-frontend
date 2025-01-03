@@ -32,7 +32,7 @@ const Sidebar = () => {
   
 
   return (
-    <div className="flex flex-col h-full w-60 sm:w-80 bg-[#d73939d6] sm:bg-transparent text-white p-4">
+    <div className="flex flex-col h-full w-60 sm:w-80 bg-[#571a1aaf] sm:bg-transparent text-white p-4">
     
       <h2 className="hidden sm:block font-bold text-2xl text-[#26bc82] w-full pl-12 py-4 border-b-2 border-green-300">E-Validation</h2>
       <ul className="flex-grow mt-10 sm:mt-0 font-semibold">
@@ -40,7 +40,7 @@ const Sidebar = () => {
           <li key={item.id} className='py-1' onClick={item.click}>
             <Link
               to={item.path}
-              className={`flex items-center py-2 px-4 transition-colors duration-300 rounded-md 
+              className={`flex items-center py-2 px-4 transition-colors w-60 duration-300 rounded-md 
                 ${activeIndex === item.id ? 'bg-teal-500' : 'hover:bg-[#3a3551f4] hover:scale-95'}`}
               onClick={() => handleItemClick(item.id)}
               aria-current={activeIndex === item.id ? 'page' : undefined}
