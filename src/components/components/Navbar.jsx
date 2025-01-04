@@ -1,5 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { Menu, X, Ticket, ScanLine } from 'lucide-react';
+import React, { useState, useEffect } from "react";
+import { Menu, X, Ticket, ScanLine } from "lucide-react";
+import { Button } from "@material-tailwind/react";
+import { Link } from "react-router-dom";
+// import { Link } from 'lucide-react';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -9,21 +12,25 @@ export default function Navbar() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${
-      isScrolled ? 'bg-white/80 backdrop-blur-lg shadow-lg' : 'bg-transparent'
-    }`}>
+    <nav
+      className={`fixed w-full z-50 transition-all duration-300 ${
+        isScrolled ? "bg-white/80 backdrop-blur-lg shadow-lg" : "bg-transparent"
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
             <Ticket className="h-8 w-8 text-indigo-600" />
-            <span className="ml-2 text-xl font-bold text-gray-900">TicketFlow</span>
+            <span className="ml-2 text-xl font-bold text-gray-900">
+              TicketFlow
+            </span>
           </div>
-          
+
           {/* <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-4">
               <a href="#home" className="nav-link">Home</a>
@@ -32,11 +39,19 @@ export default function Navbar() {
               <a href="#contact" className="nav-link">Contact</a>
             </div>
           </div> */}
-          <a href="login" className="nav-link">Login</a>
+
+          {/* <a href='login'> <button className='p-2 bg-blue-gray-600 text-black font-semibold'>Login</button></a> */}
+          <Link to="login">
+            <Button className="bg-blue-200 text-center text-gray-700">Login</Button>
+          </Link>
 
           <div className="md:hidden">
             <button onClick={() => setIsMenuOpen(!isMenuOpen)}>
-              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              {isMenuOpen ? (
+                <X className="h-6 w-6" />
+              ) : (
+                <Menu className="h-6 w-6" />
+              )}
             </button>
           </div>
         </div>
